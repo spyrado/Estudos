@@ -13,22 +13,15 @@ class NegociacaoController{
         
         event.preventDefault();
         
-        let data = new Date(
-            ...this.inputData.value
-            .split("-")
-            .map((va,i) => va - i % 2)
-        );
+        let helper = new DateHelper();
         
         let negociacao = new Negociacao(
-            data,
+            helper.textoParaData(this.inputData.value),
             this.inputQuantidade.value,
             this.inputValor.value
         );
         
-        let dataToString = negociacao.data.getDate() + "/" +
-                           (negociacao.data.getMonth()+1) + "/" +
-                           negociacao.data.getFullYear();
-        console.log(dataToString);
-        
+        console.log(negociacao.data);
+        console.log(helper.dataParaTexto(negociacao.data));
     }
 }
