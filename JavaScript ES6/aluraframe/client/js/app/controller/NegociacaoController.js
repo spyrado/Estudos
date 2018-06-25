@@ -22,6 +22,12 @@ class NegociacaoController{
         this._limpaFormulario();     
     }
     
+    apaga(){
+        
+        this._listaNegociacoes.esvazia();
+        this._negociacoesView.update(this._listaNegociacoes);
+    }
+    
     _criaNegociacao(){
         
         return new Negociacao(
