@@ -28,8 +28,6 @@ class NegociacaoController{
             }
         });
         
-        console.log(this._listaNegociacoes.adiciona);
-        
         this._negociacoesView = new NegociacoesView($("#listaNegociacoes"));
         this._negociacoesView.update(this._listaNegociacoes);
         
