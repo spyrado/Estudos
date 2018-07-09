@@ -60,19 +60,27 @@
     </script>  
     
     <script>
-        let negociacao = new Proxy(new Negociacao(new Date(), 2, 100), {
+        let lista = new Proxy(new ListaNegociacoes(), {
             
-            get: function(target, prop, receiver){
+            get(target,prop,receiver){
                 
-                console.log(`A propriedade ${prop} foi interceptada`);
-                
-               return Reflect.get(target, prop, receiver);
+                if(["adiciona", "esvazia"].includes(prop) && typeof(target[prop]) == "function"){
+                    
+                    return function(){
+                        
+                        console.log(`interceptando ${prop}`);
+                        Reflect.apply(target[prop], target, arguments);
+                    }
+                    
+                    Reflect.get(target,prop,receiver);
+                }
             }
-            
         });
         
-        console.log(negociacao.quantidade);
-        console.log(negociacao.valor);
+        lista.adiciona(new Negociacao(new Date(), 1, 100));
+        lista.esvazia();
+        
+        
     </script>
     
 </body>
