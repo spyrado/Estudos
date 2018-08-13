@@ -1,0 +1,16 @@
+.container{
+    width: 96%;
+    margin: 0 auto;
+}
+.button{
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 25px 50px;
+    background: #48A3A6;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 1px 1px 5px black;
+    margin: 5px;
+}

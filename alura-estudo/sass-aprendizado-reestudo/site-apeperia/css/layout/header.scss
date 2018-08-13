@@ -1,0 +1,107 @@
+/** Header **/
+header {
+  border-top: 5px solid $cor-padrao;
+  background: rgba(30, 44, 53, 0.8);
+  height: 90px;
+  width: 100%;
+  position: absolute;
+  
+  @media #{$mq-mobile}{
+    height: auto;
+    
+    h1 {
+		max-width: 50%;
+		margin: 0 auto;
+      img {
+          max-width: 100%;
+          margin: .5em auto;
+          display: block;
+      }
+	}
+  }
+  
+  .container {
+    position: relative;
+    
+    @media #{$mq-mobile}{
+      position: static;
+    }
+  }
+}
+
+.menu-principal {
+  position: absolute;
+  right: 0;
+  top: -.5em;
+  font-size: 1.2em;
+  font-weight: lighter;
+  
+  @media #{$mq-mobile}{
+    position: static;
+    display: block;
+    width: auto;
+    text-align: center;
+  }
+  
+  ul {
+    padding-left: 0;
+  }
+  li {
+    display: inline-block;
+    width: 5em;
+    
+    @media #{$mq-mobile}{
+      margin: .4em;
+      width: auto;
+    }
+  }
+  a {
+    color: $cor-branca;
+    text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+  }
+}
+
+
+/** Destaque **/
+.destaque {
+  background: url(../imagens/destaque.jpg) center bottom repeat-x;
+  -webkit-background-size: cover;
+  background-size: cover;
+  color: $cor-branca;
+  height: 330px;
+  padding-top: 10em;
+  
+  @media #{$mq-mobile}{
+    font-size: 14px;
+    height: 250px;
+  }
+  
+  p {
+    width: 30em;
+    
+    &:first-child {
+      width: 30em;
+      font-size: 1.3em;
+      line-height: 1.1;
+      
+      &:first-line {
+        font-size: 2.2em;
+        font-weight: bold;
+      }// fim p:first-child:first-line
+    }// fim p:first-child
+  }// fim p
+  
+  button {
+    margin-top: 1em;
+    background: $cor-padrao;
+    border: 0;
+    padding: .6em;
+    font-size: 1.2em;
+    @include border-radius(3.13em);
+    @include box-shadow(rgba(0, 0, 0, 0.3) 0 2px 6.65px);
+    font-weight: bold;
+  }
+}// fim destaque
