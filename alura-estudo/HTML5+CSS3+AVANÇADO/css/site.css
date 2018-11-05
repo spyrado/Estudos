@@ -1,0 +1,179 @@
+html{
+    font-size: 120%;
+}
+body{
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Crimson Text", "Times New Roman", serif;
+    background-color: #F2FFFC;
+    line-height: 1.5;
+}
+.titulo-principal{
+    text-align: center;
+    color: #FFF;
+    background-color: #851944;
+    padding: 1.25rem;
+    margin: 0;
+    border-bottom: 0.5rem solid #000;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+.titulo-principal h1{
+    text-shadow: 5px 5px #000;
+}
+.container{
+    width: 720px;
+    margin: 0 auto;
+    padding: 30px;
+}
+strong{
+    font-weight: bold;
+}
+em{
+    font-style: italic;
+}
+.subtitulo-texto{
+    font-size: 1.5rem;
+    clear: both;
+}
+h1, h2{
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+}
+p{
+    font-family: "Crimson Text";
+    text-align: justify;
+    margin: 20px 0;
+}
+cite{
+    font-style: italic;
+    float: right;
+    
+}
+
+blockquote{
+    float: left;
+}
+
+blockquote:nth-of-type(2n+1){
+    float: right;
+}
+
+aside, footer{
+    padding: 20px;
+}
+.navegacao-site{
+    background-color: #3C1D3D;
+    color: #F2FFFC;
+    text-align: center;
+    width: calc(0.9 * 300px);
+    padding-top: calc(300px + 1em);
+}
+
+.navegacao-site a:hover,
+.nacegacao-site a:focus{
+    text-shadow: 0 0 4px pink;
+}
+.navegacao-site, .minha-foto{
+
+    box-sizing: border-box; 
+}
+
+.minha-foto{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-left: .5em solid black;
+    border-bottom: .5em solid black;
+}
+main{
+    flex-grow: 1;
+    padding-bottom: 80px;
+}
+
+main a:hover,
+main a:focus,
+footer a:hover,
+footer a:focus{
+    color: red;
+}
+.navegacao-site ul li a{
+    color: inherit;
+    text-decoration: none;
+    text-transform: lowercase;
+    font-family: "Open Sans Condensed", sans-serif;
+}
+.navegacao-site h1{
+    font-size: 1.5625em;
+    margin-bottom: 0.8333333333em;
+}
+article + article{
+    background-image: linear-gradient(to right, transparent, black, transparent);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    padding-top: 30px;
+    margin-top: 20px;
+}
+.leia-mais{
+    font-size: 1.5em;
+    padding: 0.2666666667em;
+    margin: 0.6666666667em;
+    margin: 0.6666666667em;
+    display: block;
+    text-align: center;
+    background-color: #E6E7E8;
+}
+.icones-sociais li{
+    display: inline-block;
+}
+.icones-sociais a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999px;
+    position: relative;
+}
+
+.icones-sociais a:hover::after,
+.icones-sociais a:focus::after{
+    content: attr(data-legenda);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    text-indent: 0;
+    width: 300%;
+    background: black;
+    font-size: .75em;
+}
+.icones-sociais a:hover::before,
+.icones-sociais a:focus::before{
+    content: '';
+    width: 0.8em;
+    height: 0.8em;
+    background-color: #000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(.5em) rotate(45deg);
+}
+.github{
+        background-image: url("../img/github.png");
+}
+.twitter{
+        background-image: url("../img/twitter.png");
+}
+.linkedin{
+        background-image: url("../img/linkedin.png");
+}
+#rodape-pagina{
+    background-image: radial-gradient(ellipse at bottom left, rgba(60, 29, 61, 0.8),rgba(60, 29, 61, 0.8) 65%, #000 65%, #000 70%, transparent 70%, transparent);
+    background-size: 25% 100%;
+    background-repeat: no-repeat;
+    text-shadow: 1px 1px #000;
+    color: #F2FFFC;
+    padding: 1.0416666667em;
+    clear: both;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

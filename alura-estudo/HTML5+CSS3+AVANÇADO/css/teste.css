@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+}
+    ul, ol, li {
+        list-style: none;
+    }
+
+.example {
+    color: #FFF;
+    text-align: center;
+}
+    .example-item {
+        display: inline-block;
+        padding: 0;
+        width: 20%;
+        height: 150px;
+        margin-right: .5em;
+    }
+    .example-item_first {
+        background-color: #FAA116;
+    }
+    .example-item_second {
+        background-color: #57C7C3;
+        margin-left: auto;
+    }
+    .example-item_third {
+        background-color: #3B97D3;
+        margin: 0 auto;
+    }
+.title{
+    text-align: center;
+}

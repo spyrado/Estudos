@@ -1,0 +1,28 @@
+.error{
+    font-weight: bold;
+    color: white;
+    background: rgba(255, 0, 0,.7);
+}
+.atencao{
+    background: rgba(237, 253, 39, 0.85);
+}
+.msg-erro-li{
+    border-radius: 4px;
+    background: linear-gradient(#e52626,red);
+    height: 0;
+    border: 1px solid white;
+    width: 0;
+    text-align: center;
+    font-weight: bold;
+    line-height: 30px;
+    color: white;
+    opacity: 0;
+    transition: all .3s ease-out;
+    font-size: 0;
+}
+.efeito{
+    opacity: 1;
+    height: 30px;
+    width: 250px;
+    font-size: 1em;
+}

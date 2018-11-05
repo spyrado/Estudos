@@ -1,0 +1,110 @@
+h1{
+  animation: aparece 2s;
+}
+@keyframes aparece{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.citacoes-bio{
+    position: relative;
+    background-color: #D9E5E3;
+    border: 1em solid #C2CCCA;
+    width: 30ch;
+    margin: 1em 2em;
+    padding: 1em;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: box-shadow 1s, transform 1s;
+    transition-delay: 1s, 0s;
+    animation: quica 1s infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in;
+}
+@keyframes quica{
+  from{
+    top:0;
+  }
+    90%{
+        transform: rotate(-2deg);
+    }
+    95%{
+        transform: rotate(2deg);
+    }
+  to{
+    top: 1em;
+  }
+}
+.citacoes-bio:hover,
+.citacoes-bio:focus{
+    box-shadow: 0 0 0 9999px rgba(0,0,0,.75);
+    animation-play-state: paused;
+    transition-delay: 0s, 1s;
+}
+
+.citacoes-bio:nth-of-type(odd):hover,
+.citacoes-bio:nth-of-type(odd):focus{
+    transform: scale(1.2) rotate(5deg);
+}
+.citacoes-bio:nth-of-type(even):hover,
+.citacoes-bio:nth-of-type(even):focus{
+    transform: scale(1.2) rotate(-5deg);  
+}
+
+
+
+blockquote:before{
+    content: '“';
+    font-size: 10em;
+    color: #bbb;
+    position: absolute;
+    line-height: .8;
+}
+blockquote > p{
+    position: relative;
+}
+
+main .container > p:first-letter{
+    color: #3C1D3D;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+    margin-right: .2ch;
+    line-height: 1;
+}
+.habilidades{
+  border-collapse: separate;
+  border-spacing: .25em;
+  margin: 1em 0;
+}
+.habilidades th,
+.habilidades td{
+  padding: 1em;
+}
+.habilidades th{
+  font-weight: bold;
+  background-color: #851944;
+  color: white;
+}
+.habilidades thead{
+  background: #3C1D3D;
+  color: #fff;
+  font-weight: bold;
+}
+.habilidades tbody th{
+  background: #851944;
+}
+.habilidades tbody td{
+  background: #EEE;
+  color: inherit;
+}
+.habilidades td[rowspan="3"]{
+  vertical-align: middle;
+  text-align: center;
+  font-style: italic;
+}
+
