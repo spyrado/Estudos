@@ -27,4 +27,27 @@ class HttpService{
             xhttp.send();
         });  
     }
+    
+    post(url, dado){
+        
+        return new Promise((resolve, reject) => {
+            
+            let xhttp = new XMLHttpRequest();
+        
+            xhttp.open('POST', url, true);
+            xhttp.setRequestHeader('Content-type', 'application/json');
+            xhttp.onreadystatechange = () => {
+
+                if(xhttp.readyState == 4){
+                    if(xhttp.status == 200){
+                        resolve(JSON.parse(xhttp.responseText));
+                    }else{
+                        reject(xhttp.responseText);
+                    }
+                }
+            }
+            
+            xhttp.send(JSON.stringify(dado));
+        });
+    }
 }
