@@ -1,29 +1,70 @@
-<!-- dissecando-uma-promise.html -->
+<!-- teste promise -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dissecando uma promise</title>
+    <title>Document</title>
 </head>
 <body>
+
     <script>
 
-        let ok = false;
-    let promise = new Promise((resolve, reject) => {
+        function a(falhar) {
 
-        // como temos mais de uma instrução, precisamos colocar um bloco em nossa arrow function! Lembrou?
-        setTimeout(() => {
-            if(ok) {
-                resolve('PROMISE CONCLUÍDA');
-            } else {
-                reject('HOUVE PROBLEMAS');
-            }
-        }, 5000);
-    });
+            return new Promise((resolve, reject) => {
 
-    promise
-        .then(resultado => console.log(resultado))
-        .catch(erro => console.log(erro));
+                setTimeout(() => {
+
+                    if(falhar) {
+
+                        reject('PROMISE A FALHOU');
+                    } else {
+
+                        console.log('PROMISE A RESOLVIDA');
+                        resolve('DADO A');
+                    }
+
+                }, 2000);
+            });
+        }
+
+        function b(falhar) {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if(falhar) {
+
+                        reject('PROMISE B FALHOU');
+                    } else {
+
+                        console.log('PROMISE B RESOLVIDA')
+                        resolve('DADO B');
+                    }
+
+                }, 1000);
+            });
+        }
+
+        function c(falhar) {
+
+            return new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+
+                    if(falhar) {
+
+                        reject('PROMISE C FALHOU');
+                    } else {
+
+                        console.log('PROMISE C RESOLVIDA')
+                        resolve('DADO C');
+                    }
+
+                }, 500);
+            });
+        }
+
     </script>
 </body>
-</html>
