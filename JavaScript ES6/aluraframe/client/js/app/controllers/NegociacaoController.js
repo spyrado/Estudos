@@ -130,3 +130,4 @@ var NegociacaoController = function () {
 
     return NegociacaoController;
 }();
+//# sourceMappingURL=NegociacaoController.js.map
