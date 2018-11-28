@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aprendendo IndexedDB</title>
+</head>
+<body>
+    
+    
+    <script>
+        
+        var request = window.indexedDB.open('aluraframe', 1);
+        
+        // Retorna a função, caso o banco foi criado com sucesso.
+        request.onupgradeneeded = (e) => {
+            console.log('Banco criado com sucesso!');
+            console.log(e.target.result);  
+        };
+        // Caso o banco seja conectado, exibe a mensagem.
+        request.onsuccess = (e) => {
+            console.log('Conectado ao banco com sucesso');
+        };
+        // Caso falhe a conexao
+        request.onerror = (e) => {
+            console.log('erro na conexao' + e.target.error);
+        };
+        
+    </script>
+</body>
+</html>
