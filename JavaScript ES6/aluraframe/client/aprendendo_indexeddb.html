@@ -5,6 +5,7 @@
     <title>Aprendendo IndexedDB</title>
 </head>
 <body>
+<<<<<<< HEAD
     
     
     <script>
@@ -25,6 +26,102 @@
             console.log('erro na conexao' + e.target.error);
         };
         
+=======
+   
+   <script src="js/app/models/Negociacao.js"></script>
+    
+    <script>
+        
+        var connection;
+        
+        //Abre a requisicao
+        var request = window.indexedDB.open('aluraframe', 3);
+        
+        request.onupgradeneeded = e => {
+            
+            console.log("Cria ou altera um banco existente");
+            
+            let minhaConexao = e.target.result;
+            
+            // Se existe uma objectStore negociacoes, deleta ela..
+            if(minhaConexao.objectStoreNames.contains(`negociacoes`)){
+                minhaConexao.deleteObjectStore('negociacoes');
+            }
+            // cria a objectStore negociacoes
+            minhaConexao.createObjectStore('negociacoes', {autoIncrement: true});
+        };
+        
+        request.onsuccess= e => {
+            
+            console.log("Conexão obtida com sucesso");
+            connection = e.target.result;
+        };
+        
+        request.onerror = e => {
+            
+            // para descobrir o tipo de erro que aconteceu
+            console.log(e.target.error);
+        };
+        
+        
+        function adiciona(){
+            
+            // Precisamos de uma transacao para poder gravar dentro da objectStore
+            //Crio uma transacao
+            let transaction = connection.transaction(['negociacoes'], 'readwrite');
+            //Aponto para qual objectStore eu quero acessar.
+            let store = transaction.objectStore('negociacoes');
+            // crio uma negociacao de teste
+            let negociacao = new Negociacao(new Date(), 1, 200);
+            // peco para adicionar minha negociacao ao store
+            let request = store.add(negociacao);
+            
+            request.onsuccess = e => {
+                console.log("Negociacao incluida com sucesso");
+            };
+            
+            request.onerror = e => {
+                console.log("Nao foi possivel incluir a negociacao");
+            };
+        }
+        
+        function listaTodos(){
+            
+            // Precisamos de uma transacao para poder gravar dentro da objectStore
+            //Crio uma transacao
+            let transaction = connection.transaction(['negociacoes'], 'readwrite');
+            //Aponto para qual objectStore eu quero acessar.
+            let store = transaction.objectStore('negociacoes');
+            
+            // ele aponta para cada linha da nossa objectSore, esse é o cara que vai 'passear'por la
+            let cursor = store.openCursor();
+            
+            let negociacoes = [];
+            
+            cursor.onsuccess = e => {
+                //Recebe o ponteiro
+                let atual = e.target.result;
+                // Se tiver um ponteiro valido
+                if(atual){
+                    // recebo o valor do ponteiro, apenas as propriedades q recebo
+                    let dado = atual.value;
+                    
+                    negociacoes.push(new Negociacao(dado._data, dado._quantidade, dado._valor));
+                    // Pedindo para o indexedDB ir para a proxima negociacao,
+                    //Quando chamamos o continue, ele chama o metodo onsuccess novamente, e assim ele vai dar esse loop ate n ter mais dado para apontar
+                    atual.continue();
+                }else{
+                    console.log(negociacoes);
+                }
+            }
+            
+            cursor.onerror = e => {
+                console.log(e.target.error.name);
+            }
+        }
+        
+        
+>>>>>>> 1d4bc11fe7bcc64df686528d70c92a2f9108c243
     </script>
 </body>
 </html>
