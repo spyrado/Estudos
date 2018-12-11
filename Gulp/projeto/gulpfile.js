@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     htmlReplace = require('gulp-html-replace'),
     uglify = require('gulp-uglify'),
     usemin = require('gulp-usemin'),
-    cssmin = require('gulp-cssmin');
+    cssmin = require('gulp-cssmin'),
+    browserSync = require('browser-sync');
 
 /* Exucuta todas as minhas tarefas, copy com dependencia 
 E o restante assincronamente, isso é.. vao rodar ao msm tempo, pois 
@@ -65,4 +66,15 @@ gulp.task('usemin', function(){
             'css': [cssmin]
         }))
         .pipe(gulp.dest('dist'));
+});
+
+gulp.task('server',function(){
+
+    browserSync.init({
+        server: {
+            baseDir: 'src'
+        }
+    });
+
+    gulp.watch('src/**/*').on('change', browserSync.reload);
 });
