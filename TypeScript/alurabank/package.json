@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^2.0.51",
     "typescript": "^2.3.2"
   }
 }
