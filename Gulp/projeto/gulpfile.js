@@ -1,13 +1,15 @@
-var gulp = require('gulp'),
-    imagemin = require('gulp-imagemin'),
-    clean = require('gulp-clean'),
-    concat = require('gulp-concat'),
-    htmlReplace = require('gulp-html-replace'),
-    uglify = require('gulp-uglify'),
-    usemin = require('gulp-usemin'),
-    cssmin = require('gulp-cssmin'),
-    browserSync = require('browser-sync');
-
+var gulp = require('gulp')
+    ,imagemin = require('gulp-imagemin')
+    ,clean = require('gulp-clean')
+    ,concat = require('gulp-concat')
+    ,htmlReplace = require('gulp-html-replace')
+    ,uglify = require('gulp-uglify')
+    ,usemin = require('gulp-usemin')
+    ,cssmin = require('gulp-cssmin')
+    ,browserSync = require('browser-sync')
+    ,jshint = require('gulp-jshint')
+    ,jshintStylish = require('jshint-stylish')
+    ,csslint = require('gulp-csslint');
 /* Exucuta todas as minhas tarefas, copy com dependencia 
 E o restante assincronamente, isso é.. vao rodar ao msm tempo, pois 
 eles não dependem do outro */
@@ -68,12 +70,27 @@ gulp.task('usemin', function(){
         .pipe(gulp.dest('dist'));
 });
 
+/* Inicia um servidor que, a cada alteração nos arquivos, ele vai atualizar o browser
+    tem um plugin adicional, que fica verificando os erros no javascript
+*/
 gulp.task('server',function(){
 
     browserSync.init({
         server: {
             baseDir: 'src'
         }
+    });
+
+    gulp.watch('src/js/*.js').on('change', function(event){
+        gulp.src(event.path)
+            .pipe(jshint())
+            .pipe(jshint.reporter(jshintStylish));
+    });
+
+    gulp.watch('src/css/*.css').on('change', function(event){
+        gulp.src(event.path)
+            .pipe(csslint())
+            .pipe(csslint.reporter());
     });
 
     gulp.watch('src/**/*').on('change', browserSync.reload);
