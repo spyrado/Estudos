@@ -9,7 +9,8 @@ var gulp = require('gulp')
     ,browserSync = require('browser-sync')
     ,jshint = require('gulp-jshint')
     ,jshintStylish = require('jshint-stylish')
-    ,csslint = require('gulp-csslint');
+    ,csslint = require('gulp-csslint')
+    ,autoprefixer = require('gulp-autoprefixer');
 /* Exucuta todas as minhas tarefas, copy com dependencia 
 E o restante assincronamente, isso é.. vao rodar ao msm tempo, pois 
 eles não dependem do outro */
@@ -60,12 +61,16 @@ gulp.task('build-img',function(){
     
 // });
 
+
+/* Pega todos os arquivos *.html, verifica as palavras chaves correspondentes,
+nos arquivos .html, junta e minifica todos os arquivos js e faz a mesma coisa para o css, 
+porem no css eu ainda antes de minificar eu dou um autoprefixer e depois minifico. */
 gulp.task('usemin', function(){
     
     gulp.src('dist/**/*.html')
         .pipe(usemin({
             'js': [uglify],
-            'css': [cssmin]
+            'css': [autoprefixer, cssmin]
         }))
         .pipe(gulp.dest('dist'));
 });
