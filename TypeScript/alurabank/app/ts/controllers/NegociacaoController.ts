@@ -16,7 +16,7 @@ class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
 
-    adiciona(event: Event){
+    adiciona(event: Event): void {
 
         event.preventDefault();
         
