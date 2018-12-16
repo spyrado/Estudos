@@ -1,4 +1,6 @@
-const controller = new NegociacaoController();
+import { NegociacaoController } from './controllers/NegociacaoController';
+
+const CONTROLLER = new NegociacaoController();
 //Usando jquery
-$('.form').submit(controller.adiciona.bind(controller));
+$('.form').submit(CONTROLLER.adiciona.bind(CONTROLLER));
 
