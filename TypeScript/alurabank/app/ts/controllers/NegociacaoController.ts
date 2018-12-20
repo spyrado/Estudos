@@ -1,12 +1,18 @@
 import { Negociacoes, Negociacao, Mensagem } from '../models/index';
 import { NegociacoesView, MensagemView } from '../views/index';
-import {LogarTempoDeExecucao} from '../helpers/decorators/index';
+import { domInject } from '../helpers/decorators/index';
 
 export class NegociacaoController {
 
+    @domInject('#data')
     private _inputData: JQuery;
+
+    @domInject('#quantidade')
     private _inputQuantidade: JQuery;
+
+    @domInject('#valor')
     private _inputValor: JQuery;
+
     private _negociacoes = new Negociacoes();
     private _negociacoesView = new NegociacoesView('#negociacoesView', true);
     private _mensagem = new Mensagem();
@@ -14,13 +20,9 @@ export class NegociacaoController {
 
     constructor() {
         
-        this._inputData = $('#data');
-        this._inputQuantidade = $('#quantidade');
-        this._inputValor = $('#valor');
         this._negociacoesView.update(this._negociacoes);
     }
 
-    @LogarTempoDeExecucao()
     adiciona(event: Event): void {
 
         event.preventDefault();
@@ -43,6 +45,28 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
         this._mensagem.texto = 'Negociação adicionada com sucesso!';
         this._mensagemView.update(this._mensagem);
+    }
+
+    importaDados(){
+
+        function isOk(res: Response){
+            
+            if(res.ok)
+                return res;
+            else
+                throw new Error(res.statusText);
+        }
+        
+        fetch('http://localhost:8080/dados')
+            .then(res => isOk(res))
+            .then(res => res.json())
+            .then((dados: any[]) => {
+                dados
+                    .map(dado => new Negociacao(new Date(), dado.vezes, dado.montante))
+                    .forEach(negociacao => { this._negociacoes.adiciona(negociacao) })
+                    this._negociacoesView.update(this._negociacoes)
+                }
+            )
     }
 
     private _ehDiaUtil(data: Date){
