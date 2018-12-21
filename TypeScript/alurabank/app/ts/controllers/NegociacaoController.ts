@@ -1,4 +1,4 @@
-import { Negociacoes, Negociacao, Mensagem } from '../models/index';
+import { Negociacoes, Negociacao, Mensagem, NegociacaoParcial } from '../models/index';
 import { NegociacoesView, MensagemView } from '../views/index';
 import { domInject } from '../helpers/decorators/index';
 
@@ -60,13 +60,14 @@ export class NegociacaoController {
         fetch('http://localhost:8080/dados')
             .then(res => isOk(res))
             .then(res => res.json())
-            .then((dados: any[]) => {
+            .then((dados: NegociacaoParcial[]) => {
                 dados
                     .map(dado => new Negociacao(new Date(), dado.vezes, dado.montante))
                     .forEach(negociacao => { this._negociacoes.adiciona(negociacao) })
                     this._negociacoesView.update(this._negociacoes)
                 }
             )
+            .catch(erro => console.log(erro));
     }
 
     private _ehDiaUtil(data: Date){

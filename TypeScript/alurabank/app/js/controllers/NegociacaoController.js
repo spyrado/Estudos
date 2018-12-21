@@ -58,7 +58,8 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                             .map(dado => new index_1.Negociacao(new Date(), dado.vezes, dado.montante))
                             .forEach(negociacao => { this._negociacoes.adiciona(negociacao); });
                         this._negociacoesView.update(this._negociacoes);
-                    });
+                    })
+                        .catch(erro => console.log(erro));
                 }
                 _ehDiaUtil(data) {
                     return data.getDay() != DiaDaSemana.Sabado && data.getDay() != DiaDaSemana.Domingo;
