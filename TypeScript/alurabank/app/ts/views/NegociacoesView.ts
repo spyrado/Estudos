@@ -1,4 +1,4 @@
-import { View } from './View';
+import { View } from './index';
 import { Negociacoes } from '../models/Negociacoes';
 
 export class NegociacoesView extends View<Negociacoes> {
