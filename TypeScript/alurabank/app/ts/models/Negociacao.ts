@@ -1,12 +1,12 @@
-import {Imprimivel} from './index';
+import { MeuObjeto } from './index';
 
-export class Negociacao extends Imprimivel{
+export class Negociacao implements MeuObjeto<Negociacao>{
 
     constructor(
         readonly data: Date, 
         readonly quantidade: number, 
         readonly valor: number
-    ){ super(); } // coloquei o super, pelo motivo de q estou extendendo da classe imprimivel.
+    ){}
 
     get volume(){
         return this.quantidade * this.valor;
@@ -21,5 +21,11 @@ export class Negociacao extends Imprimivel{
             Valor: ${this.valor}, 
             Volume: ${this.volume}`
         )
+    }
+
+    ehIgual(negociacao: Negociacao): boolean{
+        return this.data.getDate() == negociacao.data.getDate()
+            && this.data.getMonth() == negociacao.data.getMonth()
+            && this.data.getFullYear() == negociacao.data.getFullYear();
     }
 }
