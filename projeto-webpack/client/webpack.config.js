@@ -1,4 +1,12 @@
 const path = require('path'); // modulo node.js
+const babiliPlugin = require('babili-webpack-plugin');
+
+let plugins = [];
+
+if(process.env.NODE_ENV == 'production'){
+    
+    plugins.push(new babiliPlugin());
+}
 
 module.exports = {
     entry: './app-src/app.js', // indica o primeiro modulo q vai rodar na aplicação
@@ -17,5 +25,6 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins
 }
