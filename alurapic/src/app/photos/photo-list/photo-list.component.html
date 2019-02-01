@@ -17,4 +17,15 @@
     [photos] -> preparado para receber lista de fotos. (PhotosComponent)
     "photos" -> "enviando" uma lista de photos DE PhotoListComponent PARA PhotosComponent
 -->
-<ap-photos  [photos]="photos"></ap-photos>
+<div class="text-center mt-3 mb-3">
+    <form>
+        <input
+            class="rounded"
+            type="search"
+            placeholder="search..."
+            autofocus
+            (keyup) = "filter = $event.target.value">
+    </form>
+</div>
+{{ filter }}
+<ap-photos  [photos]="photos | filterByDescription: filter"></ap-photos>
