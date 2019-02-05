@@ -33,7 +33,6 @@ export class PhotosComponent implements OnChanges{
             */
             newRows.push(photos.slice(index, index + numCols)); // esse slice retorna um vetor do index inicial até o definido.
         }
-
         return newRows;
     }
 }
