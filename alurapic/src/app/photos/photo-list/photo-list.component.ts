@@ -4,6 +4,7 @@ import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { Photo } from '../photo/photo';
+import { PhotoService } from '../photo/photo.service';
 
 @Component({
   selector: 'ap-photo-list',
@@ -12,13 +13,21 @@ import { Photo } from '../photo/photo';
 })
 export class PhotoListComponent implements OnInit, OnDestroy {
 
-  photos:Photo[] = [];
+  photos: Photo[] = [];
   filter: string = '';
   debounce: Subject<string> = new Subject<string>();
+  hasMore: boolean = true;
+  currentPage: number = 1;
+  userName: string = '';
 
-  constructor(private activatedRoute: ActivatedRoute){}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private photoService: PhotoService
+    ){}
 
   ngOnInit(): void {
+
+    this.userName = this.activatedRoute.snapshot.params.userName;
 
     this.photos = this.activatedRoute.snapshot.data.photos;
     this.debounce
@@ -28,6 +37,15 @@ export class PhotoListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.debounce.unsubscribe(); // precisamos fazer isso, pois caso o usuário saia da pagina, o Subject pode ficar alocando memoria, e pode dar erro de memoria futuramente.
+  }
+
+  load(){
+    this.photoService
+      .listFromUserPaginated(this.userName, ++this.currentPage)
+      .subscribe(photos => {
+        this.photos = this.photos.concat(photos);
+        if(!photos.length) this.hasMore = false;
+      })
   }
 
 }
