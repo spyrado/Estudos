@@ -39,6 +39,7 @@ export class PhotoListComponent implements OnInit, OnDestroy {
     this.debounce.unsubscribe(); // precisamos fazer isso, pois caso o usuário saia da pagina, o Subject pode ficar alocando memoria, e pode dar erro de memoria futuramente.
   }
 
+  // recebe a lista de photos de PhotoService
   load(){
     this.photoService
       .listFromUserPaginated(this.userName, ++this.currentPage)
