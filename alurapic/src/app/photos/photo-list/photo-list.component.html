@@ -17,18 +17,7 @@
     [photos] -> preparado para receber lista de fotos. (PhotosComponent)
     "photos" -> "enviando" uma lista de photos DE PhotoListComponent PARA PhotosComponent
 -->
-<div class="text-center mt-3 mb-3">
-    <form>
-        <i aria-hidden="true" class="fa fa-search mr-2"></i>
-        <input
-            class="rounded"
-            type="search"
-            placeholder="search..."
-            autofocus
-            (keyup) = "debounce.next($event.target.value)">
-    </form>
-</div>
-{{ filter }}
+<ap-search></ap-search>
 <ap-photos  [photos]="photos | filterByDescription: filter"></ap-photos>
 
 <ap-load-button 
