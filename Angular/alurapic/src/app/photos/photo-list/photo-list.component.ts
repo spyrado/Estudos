@@ -26,7 +26,7 @@ export class PhotoListComponent implements OnInit {
 
     this.userName = this.activatedRoute.snapshot.params.userName;
     this.photos = this.activatedRoute.snapshot.data['photos'];
-
+    
     // snapshot.data.nomeDoParametroDefinidoEmAppRouting, ai ele tras os dados q foram resolvidos.
     // this.photos = this.activatedRoute.snapshot.data.photos;
   }

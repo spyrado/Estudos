@@ -30,8 +30,6 @@ export class PhotoService {
       .append('page', page.toString());
 
     return this.http
-      .get < Photo[] > (API + '/' + userName + '/photos', {
-        params: params
-      });
+      .get < Photo[] > (API + '/' + userName + '/photos', { params });
   }
 }
