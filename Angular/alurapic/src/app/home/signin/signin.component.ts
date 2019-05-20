@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit{
   }
 
   login(){
-
+    alert(this.loginForm.contains('sadas'));
     const userName = this.loginForm.get('userName').value;
     const password = this.loginForm.get('password').value;
 
