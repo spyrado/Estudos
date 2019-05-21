@@ -20,6 +20,10 @@ export class SigninComponent implements OnInit{
     private platformDetectorService: PlatformDetectorService){}
   
   ngOnInit(): void {
+
+    // Se a primeira condicao for true, ele executa a segunda.
+    this.platformDetectorService.isPlatformBrowser() && 
+    this.userNameInput.nativeElement.focus();
     
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
@@ -28,7 +32,7 @@ export class SigninComponent implements OnInit{
   }
 
   login(){
-    alert(this.loginForm.contains('sadas'));
+    
     const userName = this.loginForm.get('userName').value;
     const password = this.loginForm.get('password').value;
 
