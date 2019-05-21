@@ -12,20 +12,12 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: '', 
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '', 
-        component: SigninComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'signup',
-        component: SignupComponent
-      }
-    ]
+    path: '',
+    pathMatch: 'full', // esse cara indica para o redirect, carregar EXATAMENTE a rota indicada.
+    redirectTo: 'home'
+  },
+  {
+    path: 'home'
   },
   {
     path: 'user/:userName',
