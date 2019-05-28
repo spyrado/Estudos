@@ -7,7 +7,7 @@ import { FormularioSimplesComponent } from './formulario-simples.component';
   declarations: [
     FormularioSimplesComponent
   ],
-  imports: [ 
+  imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule
