@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AsideComponent } from './aside/aside.component';
-import { MaterialModule } from '../shared/material/material.module';
+import { MaterialModule } from '../shared/components/material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { MaterialModule } from '../shared/material/material.module';
   ],
   imports: [ 
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
     AsideComponent
