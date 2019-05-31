@@ -3,16 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { AsidesModule } from './asides/asides.module';
+import { SearchComponent } from './search/search.component';
+import { SideNavsModule } from './sidenavs/sidenavs.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
-    AsidesModule
+    SideNavsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
