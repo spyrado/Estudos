@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { SideNavResponsive } from './sidenav-responsive';
+import { MatIcon } from '@angular/material';
 
 @Component({
   selector: 'app-sidenav-responsive',
@@ -15,8 +16,10 @@ export class SideNavResponsiveComponent implements OnDestroy {
     description: 'Super carro cor vermelha'
   }
 
-  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
+  @ViewChild('arrowIcon', {read: ElementRef}) arrowIcon: ElementRef;
 
+  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
+  arrowDownProperty: boolean = false;
   //JSON DE menu / submenu do sidenav
   sidenavs: SideNavResponsive[] = [
     {
@@ -36,6 +39,9 @@ export class SideNavResponsiveComponent implements OnDestroy {
       menu: {
         name: 'Comunicação entre componentes',
         submenu: [
+          {
+            name: '@Input'
+          },
           {
             name: '@Output'
           }
@@ -57,6 +63,15 @@ export class SideNavResponsiveComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  arrowDown(){
+
+    if(this.arrowDownProperty){
+      this.arrowIcon.nativeElement.style.transform = 'rotate(0deg)';
+    }else{
+      this.arrowIcon.nativeElement.style.transform = 'rotate(90deg)';
+    }
   }
 
   ngOnDestroy(): void {
