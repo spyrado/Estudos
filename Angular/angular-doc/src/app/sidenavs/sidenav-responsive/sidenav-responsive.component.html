@@ -4,41 +4,32 @@
     <h1 class="example-app-name">Projeto Doc v0.1</h1>
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"
-                 class="menu-content">
+  <mat-sidenav-container 
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav 
+      #snav 
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" 
+      fixedTopGap="56"
+      role="navigation"
+      class="menu-content"
+      [opened]="!mobileQuery.matches">
       <mat-nav-list>
-        <!-- <a mat-list-item routerLink="." *ngFor="let sidenav of sidenavs">{{sidenav.menu.name}}</a> -->
-        <ul class="menu-list list-unstyled">
-          <li class="item-menu-list" *ngFor="let sidenav of sidenavs">
-            <a mat-list-item routerLink="." class="link-menu-list">
-              {{ sidenav.menu.name }}
-              <mat-icon 
-                class="mat-icon-menu" 
-                *ngIf="sidenav.menu.submenu[0].name"
-                (click)="arrowDown(); arrowDownProperty = !arrowDownProperty"
-                #arrowIcon>keyboard_arrow_right</mat-icon>
-            </a>
-            <ul 
-              class="sub-menu-list pl-3 list-unstyled" 
-              *ngIf="sidenav.menu.submenu[0].name">
-              <li class="item-sub-menu-list" *ngFor="let submenu of sidenav.menu.submenu">
-                <a mat-list-item routerLink="." class="link-sub-menu-list"> {{ submenu.name }} </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <!-- Carrega a lista de menus -->
+        <app-sidenav-menu-list></app-sidenav-menu-list>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content class="mat-typography">
-      <div class="container">
-
+    <mat-sidenav-content 
+      class="mat-typography"
+      role="main">
+      <main class="container">
+        
         <h1 class="title p-4 text-center">Angular Doc</h1>
         <!-- <app-photo [url]="photo.url" [description]="photo.description"></app-photo> -->
-      </div>
+        <router-outlet></router-outlet>
+      </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
