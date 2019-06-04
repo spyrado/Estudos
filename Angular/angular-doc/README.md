@@ -2,6 +2,10 @@
 
 Projeto com a finalidade de estudar todos( Ou quase todos ) os recursos que o Angular / Material podem me fornecer
 
+**Referencias:** 
+  </br>https://angular.io/docs
+  </br>https://material.angular.io
+
 ### Angular :book:
 - [x] Routes
 - [x] Invalid Routes
