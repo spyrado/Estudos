@@ -13,4 +13,20 @@ input.example-right-align {
   .mat-raised-button.mat-accent{
     background: $cor-secundaria;
   }
+  mat-spinner{
+    width: 30px !important;
+    height: 30px !important;
+    svg{
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+}
+
+.btn-login{
+  transition: all 1s;
+}
+.btn-login-animate{
+  width: 50%;
+  margin: 0 auto;
 }

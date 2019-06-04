@@ -10,6 +10,11 @@
         [attr.aria-pressed]="hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
     <button mat-raised-button color="accent"
-      (click)="animaBotao($event)">Login</button>
+      (click)="animaBotao($event)" 
+      [hidden]="showSpinner"
+      class="btn-login">Login</button>
+      <div class="d-flex justify-content-center">
+        <mat-spinner *ngIf="showSpinner"></mat-spinner>
+      </div>
   </form>
 </div>
