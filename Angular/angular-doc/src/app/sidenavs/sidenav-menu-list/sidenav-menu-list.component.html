@@ -14,8 +14,11 @@
     <ul 
       class="sub-menu-list pl-3 list-unstyled" 
       *ngIf="sidenav.menu.submenu[0].name">
-      <li class="item-sub-menu-list" *ngFor="let submenu of sidenav.menu.submenu">
-        <a mat-list-item [routerLink]="['form']" class="link-sub-menu-list"> {{ submenu.name }} </a>
+      <li 
+        class="item-sub-menu-list" 
+        *ngFor="let submenu of sidenav.menu.submenu"
+        (click)="setTextoTitulo('Login')">
+        <a mat-list-item [routerLink]="['form-simples']" class="link-sub-menu-list"> {{ submenu.name }} </a>
       </li>
     </ul>
   </li>

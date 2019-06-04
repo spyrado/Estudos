@@ -1,0 +1,16 @@
+@import "../../../assets/scss/variaveis.scss";
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+::ng-deep{
+  .mat-raised-button.mat-accent{
+    background: $cor-secundaria;
+  }
+}

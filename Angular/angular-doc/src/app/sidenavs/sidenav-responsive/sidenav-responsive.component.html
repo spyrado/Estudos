@@ -17,18 +17,19 @@
       [opened]="!mobileQuery.matches">
       <mat-nav-list>
         <!-- Carrega a lista de menus -->
-        <app-sidenav-menu-list></app-sidenav-menu-list>
+        <app-sidenav-menu-list (textoTitulo)="title = $event"></app-sidenav-menu-list>
       </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content 
       class="mat-typography"
       role="main">
-      <main class="container">
+      <main class="container h-100">
         
-        <h1 class="title p-4 text-center">Angular Doc</h1>
+        <h1 class="title p-4 text-center">Angular {{ title }}</h1>
         <!-- <app-photo [url]="photo.url" [description]="photo.description"></app-photo> -->
-        <router-outlet></router-outlet>
+        
+        <ng-content></ng-content>
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>

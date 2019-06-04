@@ -6,6 +6,7 @@ import { CoreModule } from './core/core.module';
 import { SearchComponent } from './search/search.component';
 import { SideNavsModule } from './sidenavs/sidenavs.module';
 import { AppRoutingModule } from './app-routing.module';
+import { HomesModule } from './homes/homes.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     CoreModule,
-    SideNavsModule,
+    HomesModule,
     AppRoutingModule
   ],
   providers: [],

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SideNavResponsive } from '../sidenav-responsive/sidenav-responsive';
 
 @Component({
@@ -38,7 +38,13 @@ export class SideNavMenuListComponent implements OnInit {
     }
   ];
 
+  @Output() textoTitulo = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void { }
+
+  setTextoTitulo(texto){
+    this.textoTitulo.emit(texto);
+  }
 }

@@ -1,15 +1,15 @@
-import { Component, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { SideNavResponsive } from './sidenav-responsive';
 
 @Component({
   selector: 'app-sidenav-responsive',
   templateUrl: './sidenav-responsive.component.html',
   styleUrls: ['./sidenav-responsive.component.scss']
 })
-export class SideNavResponsiveComponent implements OnDestroy {
+export class SideNavResponsiveComponent implements OnDestroy, OnChanges {
   
   mobileQuery: MediaQueryList;
+  title = 'Doc';
   photo = {
     url: '../../assets/img/carro-vermelho.jfif',
     description: 'Super carro cor vermelha'
@@ -24,16 +24,16 @@ export class SideNavResponsiveComponent implements OnDestroy {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    if(changes.title)
+      console.log(changes);
+  }
 
-  arrowDown(target){
-
-    console.log(target);
-
-    if(this.arrowDownProperty){
-      // this.arrowIcon.nativeElement.style.transform = 'rotate(0deg)';
-    }else{
-      // this.arrowIcon.nativeElement.style.transform = 'rotate(90deg)';
-    }
+  recebeTexto($event){
+    debugger;
+    console.log($event);
   }
 
   ngOnDestroy(): void {

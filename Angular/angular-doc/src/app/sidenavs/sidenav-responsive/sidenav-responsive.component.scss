@@ -8,12 +8,25 @@
   bottom: 0;
   left: 0;
   right: 0;
+
+  .title{
+    background: -webkit-linear-gradient(#fe1b24, #490709);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 39px;
+    @media (min-width: 425px){
+      font-size: 58px;
+    }
+    @media (min-width: 768px){
+      font-size: 66px;
+    }
+  }
 }
 .mat-toolbar.mat-primary{
   background: $cor-primaria;
 }
 .menu-content{
-  background: lighten($cor-primaria, 10%);
+  background: $cor-secundaria;
   color: white;
 }
 .example-is-mobile .example-toolbar {
@@ -41,13 +54,6 @@ h1.example-app-name {
   &:focus{
     outline: 0;
   }
-}
-
-.title{
-  font-size: 72px;
-  background: -webkit-linear-gradient(#fe1b24, #490709);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 ::ng-deep{
   .mat-list-item-content{
