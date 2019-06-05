@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-form-simples',
@@ -12,6 +13,10 @@ export class FormSimplesComponent implements OnInit {
   showWasted: boolean = false;
   mensagem: string;
 
+  // use o construtor de FormControl para definir um valor inicial ao input
+  username = new FormControl('Formulario Simples');
+  password = new FormControl('ChumbandoTexto');
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,7 +27,9 @@ export class FormSimplesComponent implements OnInit {
     event.preventDefault();
     this.mensagem = "";
     let listaDeClasses = event.target.classList;
+    //Jogo o botão de login pro lado
     listaDeClasses.add('btn-login-animate');
+    //Exibo o spinner ao lado do botão de login
     this.showSpinner = true;
     //Inicio de fato a animação
     this.iniciaAnimacao(listaDeClasses);

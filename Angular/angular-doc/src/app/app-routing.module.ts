@@ -8,7 +8,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     children: [
-      { path: 'form-simples', loadChildren: './forms/forms.module#FormsModule' }
+      { path: 'form-simples', loadChildren: './form/form.module#FormModule' }
     ]
   },
   { path: '**', loadChildren: './errors/errors.module#ErrorsModule' }
