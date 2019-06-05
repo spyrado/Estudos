@@ -24,9 +24,24 @@ input.example-right-align {
 }
 
 .btn-login{
-  transition: all 1s;
+  transition: width .3s;
+  width: 100%;
 }
 .btn-login-animate{
-  width: 50%;
-  margin: 0 auto;
+  width: 88%;
+  margin-right: auto;
+}
+.mensagem-wasted-content{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8392156862745098);
+  .wasted-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 }

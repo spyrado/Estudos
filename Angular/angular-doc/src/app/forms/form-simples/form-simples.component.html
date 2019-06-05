@@ -9,12 +9,16 @@
         <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
+    <div class="d-flex justify-content-center">
     <button mat-raised-button color="accent"
-      (click)="animaBotao($event)" 
-      [hidden]="showSpinner"
+      (click)="animaBotao($event)"
       class="btn-login">Login</button>
-      <div class="d-flex justify-content-center">
         <mat-spinner *ngIf="showSpinner"></mat-spinner>
-      </div>
+    </div>
+    <small class="text-danger">{{ mensagem }}</small>
   </form>
+</div>
+
+<div class="mensagem-wasted-content" *ngIf="showWasted">
+  <img class="wasted-center" src="../../../assets/img/wasted.gif" alt="WASTED GIF">
 </div>

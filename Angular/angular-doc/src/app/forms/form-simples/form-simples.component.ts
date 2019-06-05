@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-form-simples',
@@ -10,16 +9,35 @@ export class FormSimplesComponent implements OnInit {
 
 
   showSpinner: boolean = false;
+  showWasted: boolean = false;
+  mensagem: string;
+  @Output() textoTitulo = new EventEmitter<string>();
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    //Emito um valor para que o titulo mude de Angular Doc, para Angular Login
+    this.textoTitulo.emit('Login');
+  }
 
   animaBotao(event){
-    this.showSpinner = true;
-    setTimeout(() => this.showSpinner = false, 700);
+    //Configurações iniciais
     event.preventDefault();
-    event.target.classList.add('hinge','animate', 'btn-login-animate');
+    this.mensagem = "";
+    let listaDeClasses = event.target.classList;
+    listaDeClasses.add('btn-login-animate');
+    this.showSpinner = true;
+    //Inicio de fato a animação
+    this.iniciaAnimacao(listaDeClasses);
   }
-  // adicionar animacao ao botao com btn-login-animate
+
+  iniciaAnimacao(listaDeClasses){
+    setTimeout(() => listaDeClasses.add('hinge','animated'), 300);
+    setTimeout(() => {
+      this.showSpinner = false;
+      listaDeClasses.remove('hinge','animated','btn-login-animate');
+      this.mensagem = "You are not human";
+    }, 2300);
+    setTimeout(() => this.showWasted = true, 2600);
+  }
 }

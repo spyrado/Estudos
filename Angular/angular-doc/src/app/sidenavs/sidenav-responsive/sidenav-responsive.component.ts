@@ -6,7 +6,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
   templateUrl: './sidenav-responsive.component.html',
   styleUrls: ['./sidenav-responsive.component.scss']
 })
-export class SideNavResponsiveComponent implements OnDestroy, OnChanges {
+export class SideNavResponsiveComponent implements OnDestroy {
   
   mobileQuery: MediaQueryList;
   title = 'Doc';
@@ -23,17 +23,6 @@ export class SideNavResponsiveComponent implements OnDestroy, OnChanges {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-  }
-  
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    if(changes.title)
-      console.log(changes);
-  }
-
-  recebeTexto($event){
-    debugger;
-    console.log($event);
   }
 
   ngOnDestroy(): void {
