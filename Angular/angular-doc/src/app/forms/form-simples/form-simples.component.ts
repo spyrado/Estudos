@@ -11,13 +11,10 @@ export class FormSimplesComponent implements OnInit {
   showSpinner: boolean = false;
   showWasted: boolean = false;
   mensagem: string;
-  @Output() textoTitulo = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
-    //Emito um valor para que o titulo mude de Angular Doc, para Angular Login
-    this.textoTitulo.emit('Login');
   }
 
   animaBotao(event){
