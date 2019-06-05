@@ -15,10 +15,12 @@ export class SideNavMenuListComponent implements OnInit {
         name: 'Reactive forms',
         submenu: [
           {
-            name: 'Form simples'
+            name: 'Form simples',
+            link: 'forms/form-simples'
           },
           {
-            name: 'Form em grupo'
+            name: 'Form em grupo',
+            link: 'forms/form-group'
           }
         ]
       }
@@ -28,10 +30,12 @@ export class SideNavMenuListComponent implements OnInit {
         name: 'Comunicação entre componentes',
         submenu: [
           {
-            name: '@Input'
+            name: '@Input',
+            link: '123'
           },
           {
-            name: '@Output'
+            name: '@Output',
+            link: 'sads'
           }
         ]
       }

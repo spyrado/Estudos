@@ -4,10 +4,12 @@ import { FormSimplesComponent } from './form-simples/form-simples.component';
 import { FormRoutingModule } from './form-routing.module';
 import { MaterialModule } from '../shared/components/material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormGroupComponent } from './form-group/form-group.component';
 
 @NgModule({
   declarations: [
-    FormSimplesComponent
+    FormSimplesComponent,
+    FormGroupComponent
   ],
   imports: [ 
     CommonModule,
