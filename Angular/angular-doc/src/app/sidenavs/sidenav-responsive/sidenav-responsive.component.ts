@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({

@@ -1,22 +1,22 @@
 <ul class="menu-list list-unstyled">
   <li 
     class="item-menu-list"
-    *ngFor="let sidenav of sidenavs"
+    *ngFor="let menu of menuList"
     >
     <!-- (click)="arrowDown($event); arrowDownProperty = !arrowDownProperty" -->
     <a mat-list-item routerLink="." class="link-menu-list">
-      {{ sidenav.menu.name }}
+      {{ menu.name }}
       <mat-icon 
         class="mat-icon-menu" 
-        *ngIf="sidenav.menu.submenu[0].name"
+        *ngIf="menu.submenu[0].name"
         #arrowIcon>keyboard_arrow_right</mat-icon>
     </a>
     <ul 
       class="sub-menu-list pl-3 list-unstyled" 
-      *ngIf="sidenav.menu.submenu[0].name">
+      *ngIf="menu.submenu[0].name">
       <li 
         class="item-sub-menu-list" 
-        *ngFor="let submenu of sidenav.menu.submenu"
+        *ngFor="let submenu of menu.submenu"
         (click)="setTextoTitulo('Login')">
         <a mat-list-item [routerLink]="submenu.link" class="link-sub-menu-list"> {{ submenu.name }} </a>
       </li>

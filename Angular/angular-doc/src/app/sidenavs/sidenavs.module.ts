@@ -4,13 +4,13 @@ import { SideNavResponsiveComponent } from './sidenav-responsive/sidenav-respons
 import { PhotoComponent } from '../shared/components/photo/photo.component';
 import { MaterialModule } from '../shared/components/material/material.module';
 import { RouterModule } from '@angular/router';
-import { SideNavMenuListComponent } from './sidenav-menu-list/sidenav-menu-list.component';
+import { MenuListComponent } from './menu-list/menu-list.component';
 
 @NgModule({
   declarations: [
     SideNavResponsiveComponent,
     PhotoComponent,
-    SideNavMenuListComponent
+    MenuListComponent
   ],
   imports: [ 
     CommonModule,
@@ -19,7 +19,7 @@ import { SideNavMenuListComponent } from './sidenav-menu-list/sidenav-menu-list.
   ],
   exports: [
     SideNavResponsiveComponent,
-    SideNavMenuListComponent
+    MenuListComponent
   ],
   providers: [],
 })
