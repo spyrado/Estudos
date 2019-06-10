@@ -1,0 +1,67 @@
+@import "../../../assets/scss/variaveis.scss";
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .title{
+    background: -webkit-linear-gradient(#fe1b24, #490709);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 39px;
+    @media (min-width: 425px){
+      font-size: 58px;
+    }
+    @media (min-width: 768px){
+      font-size: 66px;
+    }
+  }
+}
+.mat-toolbar.mat-primary{
+  background: $cor-primaria;
+}
+.menu-content{
+  background: $cor-secundaria;
+  color: white;
+}
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+.btn-hamburguer{
+  &:focus{
+    outline: 0;
+  }
+}
+::ng-deep{
+  .mat-list-item-content{
+    padding: 0 25px 0 16px !important;
+  }
+  .mat-list-base{
+    .mat-list-item{
+      color: #fff;
+    }
+  }
+}

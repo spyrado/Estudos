@@ -1,0 +1,25 @@
+<ul class="menu-list list-unstyled">
+  <li 
+    class="item-menu-list"
+    *ngFor="let menu of menuList"
+    >
+    <!-- (click)="arrowDown($event); arrowDownProperty = !arrowDownProperty" -->
+    <a mat-list-item routerLink="." class="link-menu-list">
+      {{ menu.name }}
+      <mat-icon 
+        class="mat-icon-menu" 
+        *ngIf="menu.submenu[0].name"
+        #arrowIcon>keyboard_arrow_right</mat-icon>
+    </a>
+    <ul 
+      class="sub-menu-list pl-3 list-unstyled" 
+      *ngIf="menu.submenu[0].name">
+      <li 
+        class="item-sub-menu-list" 
+        *ngFor="let submenu of menu.submenu"
+        (click)="setTextoTitulo('Login')">
+        <a mat-list-item [routerLink]="submenu.link" class="link-sub-menu-list"> {{ submenu.name }} </a>
+      </li>
+    </ul>
+  </li>
+</ul>

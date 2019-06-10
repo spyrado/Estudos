@@ -1,0 +1,26 @@
+<section class="row justify-content-center">
+  <form class="col-10 col-md-6 col-lg-4 d-flex flex-column">
+    <mat-form-field color="warn">
+      <input matInput placeholder="Enter your username" type="text"
+      [formControl]="username">
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field color="warn">
+      <input matInput placeholder="Enter your password" [type]="hide ? 'text' : 'password'"
+      [formControl]="password">
+        <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+    <div class="d-flex justify-content-center">
+    <button mat-raised-button color="accent"
+      (click)="animaBotao($event)"
+      class="btn-login">Login</button>
+        <mat-spinner *ngIf="showSpinner"></mat-spinner>
+    </div>
+    <small class="text-danger">{{ mensagem }}</small>
+  </form>
+</section>
+
+<div class="mensagem-wasted-content" *ngIf="showWasted">
+  <img class="wasted-center" src="../../../assets/img/wasted.gif" alt="WASTED GIF">
+</div>

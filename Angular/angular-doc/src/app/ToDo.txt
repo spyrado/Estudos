@@ -1,0 +1,1 @@
+1º ao clicar em um menu, fechar ou abrir os seus submenus, fazer a seta se mexer conforme o comportamento.
