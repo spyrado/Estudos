@@ -1,30 +1,54 @@
 <section class="container section-form-group">
-  <div class="row">
-    <mat-form-field class="col-12 col-sm-6">
-      <input matInput placeholder="Input">
-    </mat-form-field>
-    <mat-form-field class="col-12 col-sm-6">
-        <input matInput placeholder="Input">
-      </mat-form-field>
-  </div>
-  <div class="row">
-    <mat-form-field class="col-12">
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-  </div>
-  <div class="row align-items-center">
-    <mat-form-field class="col-6">
-      <mat-select placeholder="Select">
-        <mat-option value="Saitama">Boku</mat-option>
-        <mat-option value="Shingeki">Shingeki</mat-option>
-        <mat-option value="Nanatsu">Nanatsu</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div class="col-6">
-      <mat-checkbox>Aceito os termos</mat-checkbox>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <mat-form-field class="w-100">
+          <input matInput formControlName="nome" placeholder="Nome">
+        </mat-form-field>
+        <div class="text-danger" *ngIf="profileForm.get('nome').errors?.required">
+          Name is required.
+        </div>
+        <div class="text-danger" *ngIf="profileForm.get('nome').errors?.minlength">
+          Minimo de 2 caracteres.
+        </div>
+        <div class="text-danger" *ngIf="profileForm.get('nome').errors?.pattern">
+          Deve iniciar com a letra "N".
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <mat-form-field class="w-100">
+          <input matInput formControlName="sobrenome" placeholder="Sobrenome">
+        </mat-form-field>
+        <div class="text-danger" *ngIf="profileForm.get('sobrenome').errors?.required">
+          Sobrenome is required.
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <button mat-raised-button class="col-12 col-sm-6 ml-sm-auto">Submit</button>
-  </div>
+    <div class="row">
+      <mat-form-field class="col-12">
+        <textarea matInput formControlName="textarea" placeholder="Digite qualquer coisa"></textarea>
+      </mat-form-field>
+    </div>
+    <!-- <div class="row align-items-center">
+      <mat-form-field class="col-6">
+        <mat-select placeholder="Selecione um hero" [(value)]="selectHero">
+          <mat-option value="Boku">Boku</mat-option>
+          <mat-option value="Shingeki">Shingeki</mat-option>
+          <mat-option value="Nanatsu">Nanatsu</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h1>{{ selectHero }}</h1>
+      <div class="col-6">
+        <mat-checkbox>Aceito os termos</mat-checkbox>
+      </div>
+    </div> -->
+    <div class="row">
+      <button 
+        mat-raised-button 
+        class="col-12 col-sm-6 ml-sm-auto"
+        [disabled]="!profileForm.valid">
+        Submit
+      </button>
+    </div>
+  </form>
 </section>
