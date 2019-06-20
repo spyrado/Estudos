@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main (){
+void main() {
   runApp(MaterialApp(
     home: Home(),
   ));
@@ -25,6 +25,50 @@ class _HomeState extends State<Home> {
             onPressed: () {},
           )
         ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Icon(
+              Icons.person_outline,
+              color: Colors.green,
+              size: 120.0,
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.green, fontSize: 25.0),
+              decoration: InputDecoration(
+                  labelText: "Peso (kg)",
+                  labelStyle: TextStyle(color: Colors.green)),
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.green, fontSize: 25.0),
+              decoration: InputDecoration(
+                  labelText: "Altura (cm)",
+                  labelStyle: TextStyle(color: Colors.green)),
+            ),
+            Container(
+              height: 50.0,
+              child: RaisedButton(
+                onPressed: () {},
+                child: Text(
+                  "Calcular",
+                  style: TextStyle(color: Colors.white, fontSize: 25.0),
+                ),
+                color: Colors.green,
+              ),
+            ),
+            Text(
+              "info",
+              style: TextStyle(color: Colors.green, fontSize: 25.0),
+              textAlign: TextAlign.center,
+            )
+          ],
+        ),
       ),
     );
   }
