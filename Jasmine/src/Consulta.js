@@ -1,4 +1,4 @@
-function Consulta(paciente, procedimentos, particular, retorno){
+function Consulta(paciente, procedimentos, particular, retorno, data){
     
   var clazz = {
     preco: function(){
@@ -15,6 +15,21 @@ function Consulta(paciente, procedimentos, particular, retorno){
       if(particular) precoFinal *= 2;
 
       return precoFinal;
+    },
+    getNome(){
+      return paciente;
+    },
+    getProcedimentos(){
+      return procedimentos;
+    },
+    isParticular(){
+      return particular;
+    },
+    isRetorno(){
+      return retorno;
+    },
+    getData(){
+      return data;
     }
   };
   
