@@ -1,19 +1,25 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-food-observable-list',
   templateUrl: './food-list-observable.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FoodObservableListComponent {
+export class FoodObservableListComponent implements OnInit {
 
-  @Input() foodNames: string[];
+  @Input() foodNames: Observable<string>;
+  foods: string[] = [];
 
   constructor(private changeDetectionRef: ChangeDetectorRef) { }
 
-  // Ao chamar essa função, a view irá ser atualizada
-  update() {
-    this.changeDetectionRef.detectChanges();
+  ngOnInit(): void {
+    this.foodNames
+      .subscribe(food => {
+        this.foods = [...this.foods, food];
+        this.changeDetectionRef.markForCheck();
+      }
+    );
   }
 
 }

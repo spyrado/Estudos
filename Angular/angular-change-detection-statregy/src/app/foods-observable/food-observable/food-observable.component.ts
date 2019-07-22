@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-food-observable',
@@ -6,14 +7,12 @@ import { Component } from '@angular/core';
 })
 export class FoodObsevableComponent {
 
-  foodNames = ['Bacon', 'Lettuce', 'Tomatoes'];
+  foodNames = new BehaviorSubject(['Bacon', 'Lettuce', 'Tomatoes']);
 
-  constructor() { }
+  constructor() {}
 
-  addFood(food: string) {
+  addFood(food) {
     console.log('Food Adicionada');
-    this.foodNames.push(food);
-    // Passando uma NOVA REFERENCIA o Angular consegue detectar as alterações.
-    // this.foodNames = [...this.foodNames, food];
+    this.foodNames.next(food);
   }
 }
