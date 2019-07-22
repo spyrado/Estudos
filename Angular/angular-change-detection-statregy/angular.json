@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-onpush": {
+    "angular-change-detection-statregy": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-onpush",
+            "outputPath": "dist/angular-change-detection-statregy",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-onpush:build"
+            "browserTarget": "angular-change-detection-statregy:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-onpush:build:production"
+              "browserTarget": "angular-change-detection-statregy:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-onpush:build"
+            "browserTarget": "angular-change-detection-statregy:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "angular-onpush-e2e": {
+    "angular-change-detection-statregy-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-onpush:serve"
+            "devServerTarget": "angular-change-detection-statregy:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-onpush:serve:production"
+              "devServerTarget": "angular-change-detection-statregy:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "angular-onpush"
+  "defaultProject": "angular-change-detection-statregy"
 }
