@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-food',
-  templateUrl: './food.component.html',
+  selector: 'app-food-observable',
+  templateUrl: './food-observable.component.html',
 })
-export class FoodComponent {
+export class FoodObsevableComponent {
 
   foodNames = ['Bacon', 'Lettuce', 'Tomatoes'];
 

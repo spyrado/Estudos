@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  selector: 'app-food-list',
-  templateUrl: './food-list.component.html',
+  selector: 'app-food-observable-list',
+  templateUrl: './food-list-observable.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FoodListComponent {
+export class FoodObservableListComponent {
 
   @Input() foodNames: string[];
 

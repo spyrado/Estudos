@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FoodsModule } from './foods/foods.module';
+import { FoodsObservableModule } from './foods-observable/foods-observable.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { FoodsModule } from './foods/foods.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FoodsModule
+    FoodsModule,
+    FoodsObservableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
