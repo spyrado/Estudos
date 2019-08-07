@@ -1,0 +1,23 @@
+<select #classe (change)="0">
+  <option value="alert-success">Success</option>
+  <option value="alert-info">Info</option>
+  <option value="alert-danger">Danger</option>
+  <option value="alert-warning">Warning</option>
+</select>
+
+<div class="alert {{ classe.value }}" role="alert">
+  A simple success alert—check it out!
+</div>
+
+<div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">
+  A simple success alert—check it out!
+</div>
+<div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">
+  A simple info alert—check it out!
+</div>
+<div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">
+  A simple danger alert—check it out!
+</div>
+<div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">
+  A simple warning alert—check it out!
+</div>

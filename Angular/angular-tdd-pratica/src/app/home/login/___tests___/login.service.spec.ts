@@ -1,7 +1,7 @@
 import { LoginService } from '../login.service';
 import { TestBed } from '@angular/core/testing';
 
-describe('LoginComponent', () => {
+describe('LoginService', () => {
 
   let loginService: LoginService;
 
@@ -14,9 +14,8 @@ describe('LoginComponent', () => {
     expect(loginService.auth('nicolas',123)).toBeTruthy();
   });
 
-  it('Deve retonar FALSE caso Usuário E senha INVÁLIDOS', () => {
+  it('Deve retonar FALSE caso Usuário OU senha INVÁLIDOS', () => {
     expect(loginService.auth('nicolas2',123)).toBeFalsy();
   });
-  
-  
+
 });
