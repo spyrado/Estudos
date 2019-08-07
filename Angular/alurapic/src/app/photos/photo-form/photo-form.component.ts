@@ -12,6 +12,7 @@ export class PhotoFormComponent implements OnInit {
 
   photoForm: FormGroup;
   file: File;
+  preview: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +40,16 @@ export class PhotoFormComponent implements OnInit {
         () => this.router.navigate(['']),
         (error) => console.error(error)
       );
+  }
+
+  handleFile(file: File){
+    // Recebo meu arquivo normal
+    this.file = file;
+    const reader = new FileReader();
+    // Fico esperando ele transformar pra base64, quando transformar o this.preview vai receber o valor transformado.
+    reader.onload = (event: any) => this.preview = event.target.result;
+    // mando transformar pra base64
+    reader.readAsDataURL(file);
   }
 
 }
