@@ -43,6 +43,7 @@ export class PhotoFormComponent implements OnInit {
   }
 
   handleFile(file: File){
+    console.log(file);
     // Recebo meu arquivo normal
     this.file = file;
     const reader = new FileReader();
