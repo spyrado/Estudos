@@ -13,15 +13,21 @@ module.exports = (app) => {
   });
   
   app.get('/livros', (req, res) => {
-    res.send(`
-      <html>
-        <head>
-            <meta charset="utf-8">
-        </head>
-        <body>
-            <h1> Listagem de livros </h1>
-        </body> 
-      </html>
-    `);
+    // fazendo o servidor pegar a resposta a partir do marko definido.
+    res.marko(
+      require('../views/livros/lista/lista.marko'),
+      {
+        livros: [
+          { 
+            id: 1,
+            titulo: 'Fundamentos do Node'
+          },
+          { 
+            id: 2,
+            titulo: 'Node Avançado'
+          }
+        ]
+      }
+    );
   });
 }
