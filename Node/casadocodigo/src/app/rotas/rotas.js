@@ -1,3 +1,5 @@
+const db = require('../configs/database');
+
 module.exports = (app) => {
   app.get('/', (req, res) => {
     res.send(`
@@ -14,20 +16,13 @@ module.exports = (app) => {
   
   app.get('/livros', (req, res) => {
     // fazendo o servidor pegar a resposta a partir do marko definido.
-    res.marko(
-      require('../views/livros/lista/lista.marko'),
-      {
-        livros: [
-          { 
-            id: 1,
-            titulo: 'Fundamentos do Node'
-          },
-          { 
-            id: 2,
-            titulo: 'Node Avançado'
-          }
-        ]
-      }
-    );
+    db.all('SELECT * FROM livros', function(erro, resultados){
+      res.marko(
+        require('../views/livros/lista/lista.marko'),
+        {
+          livros: resultados
+        }
+      ); 
+    });
   });
 }
