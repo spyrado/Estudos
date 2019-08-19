@@ -1,3 +1,4 @@
+const LivroDao = require('../infra/livro-dao');
 const db = require('../configs/database');
 
 module.exports = (app) => {
@@ -15,14 +16,26 @@ module.exports = (app) => {
   });
   
   app.get('/livros', (req, res) => {
-    // fazendo o servidor pegar a resposta a partir do marko definido.
-    db.all('SELECT * FROM livros', function(erro, resultados){
-      res.marko(
-        require('../views/livros/lista/lista.marko'),
-        {
-          livros: resultados
-        }
-      ); 
-    });
+
+    const livroDao = new LivroDao(db);
+
+    livroDao.lista()
+      .then(livros => {
+        // fazendo o servidor pegar a resposta a partir do marko definido.
+        res.marko(
+          require('../views/livros/lista/lista.marko'),{livros}
+        ); 
+      })
+      .catch(error => console.error(error));
+  });
+
+  app.get('/livros/form', (req, res) => {
+    res.marko(
+      require('../views/livros/form/form.marko')
+    ); 
+  });
+
+  app.post('/livros', (req, res) => {
+    console.log(req.body);
   });
 }
