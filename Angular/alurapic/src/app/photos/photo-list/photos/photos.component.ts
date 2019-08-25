@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Photo } from '../../photo/photo.interface';
+import { Photo } from '../../photo/photo';
 
 @Component({
   selector: 'ap-photos',
