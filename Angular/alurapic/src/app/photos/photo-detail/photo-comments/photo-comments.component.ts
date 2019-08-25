@@ -43,9 +43,5 @@ export class PhotoCommentsComponent implements OnInit {
         alert('Comentario adicionado com sucesso');
       },
       (erro) => console.log(erro)));
-      // .subscribe(() => {
-      //   this.commentForm.reset();
-      //   alert('Comentario adicionado com sucesso');
-      // })
   }
 }
