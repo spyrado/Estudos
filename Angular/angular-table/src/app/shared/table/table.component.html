@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" (click)="sortable('id')">{{ title.id }}</th>
+      <th scope="col" (click)="sortable('nome')">{{ title.nome }}</th>
+      <th scope="col" (click)="sortable('sobrenome')">{{ title.sobrenome }}</th>
+      <th scope="col" (click)="sortable('idade')">{{ title.idade }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.nome }}</td>
+      <td>{{ user.sobrenome }}</td>
+      <td>{{ user.idade }}</td>
+      <td>{{ user.action }}</td>
+    </tr>
+  </tbody>
+</table>
