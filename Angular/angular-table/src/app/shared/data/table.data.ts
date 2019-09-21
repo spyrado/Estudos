@@ -4,7 +4,6 @@ export const TableData = [
     nome: 'Nicolas',
     sobrenome: 'Guilherme',
     idade: 24,
-    action: '<button class="btn btn-primary">Editar</button>'
   },
   {
     id: 2,
