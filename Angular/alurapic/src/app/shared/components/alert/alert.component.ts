@@ -3,7 +3,7 @@ import { AlertService } from './alert.service';
 import { Alert } from './alert';
 
 @Component({
-  selector: 'app-alert',
+  selector: 'ap-alert',
   templateUrl: './alert.component.html'
 })
 export class AlertComponent {
@@ -33,6 +33,6 @@ export class AlertComponent {
   getAlertClass(alert: Alert){
     
     if(!alert) return '';
-    return 'alert alert'+ alert.alertType;
+    return 'alert alert-'+ alert.alertType;
   }
 }
