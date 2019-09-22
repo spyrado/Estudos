@@ -9,6 +9,8 @@ import {
   Photo
 } from './photo';
 import { PhotoComment } from './photo-comment';
+import { map, catchError } from 'rxjs/operators';
+import { throwError, of } from 'rxjs';
 
 const API = 'http://localhost:3000';
 
@@ -60,5 +62,15 @@ export class PhotoService {
 
   removePhoto(photoId: number) {
     return this.http.delete(API + '/photos/' + photoId);
+  }
+
+  like(photoId: number) {
+    return this.http.post(
+      API + '/photos/' + photoId + '/like', {}, { observe: 'response'} 
+    )
+    .pipe(map(res => true)) // Se na resposta vier tudo ok, retorna true.
+    .pipe(catchError(err => { // como se fosse o catch do trye catch, to pegando o erro q veio da resposta
+      return err.status == '304' ? of(false) : throwError(err); // se for 304 eu dou um of que retorna um Observable false
+    }));
   }
 }
