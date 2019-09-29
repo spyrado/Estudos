@@ -18,8 +18,9 @@ export class AppComponent implements OnInit{
     
     ngOnInit(): void {
       this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .pipe(map(() => this.activatedRoute))
+        .subscribe(event => console.log(event));
+      // .pipe(filter(event => event instanceof NavigationEnd))
+      // .pipe(map(() => this.activatedRoute))
       
     }
 }
