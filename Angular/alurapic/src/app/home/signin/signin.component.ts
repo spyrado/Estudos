@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { Router } from '@angular/router';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   templateUrl: './signin.component.html'
@@ -17,10 +18,12 @@ export class SigninComponent implements OnInit{
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private platformDetectorService: PlatformDetectorService){}
+    private platformDetectorService: PlatformDetectorService,
+    private titleService: Title
+  ){}
   
   ngOnInit(): void {
-
+    this.titleService.setTitle('Login');
     // Se a primeira condicao for true, ele executa a segunda.
     this.platformDetectorService.isPlatformBrowser() && 
     this.userNameInput.nativeElement.focus();
