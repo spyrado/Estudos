@@ -13,6 +13,11 @@ export interface MeuForm {
 })
 export class TemplateFormComponent implements OnInit {
 
+  usuario: any = {
+    nome: 'Nicolas',
+    email: 'nicolas@email.com'
+  };
+
   constructor() { }
 
   ngOnInit() {
@@ -20,9 +25,7 @@ export class TemplateFormComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log(form);
-    const meuForm = form.value as MeuForm;
-    console.log(meuForm.nome);
-    console.log(meuForm.email);
+    console.log(this.usuario);
   }
 
 }
