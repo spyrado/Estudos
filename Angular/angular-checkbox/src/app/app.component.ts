@@ -38,7 +38,7 @@ export class AppComponent {
     this.getCheckedItemList();
   }
 
-  getCheckedItemList(){
+  getCheckedItemList() {
     this.checkedList = [];
     for (var i = 0; i < this.checklist.length; i++) {
       if(this.checklist[i].isSelected)
