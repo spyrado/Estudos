@@ -15,9 +15,10 @@
     <label for="email">Email</label>
     <input type="text" name="email" [(ngModel)]="usuario.email" id="email" class="form-control"
       placeholder="email@gmail.com" aria-describedby="helpId" required email
-      [ngClass]="{'is-invalid': nome.touched && nome.invalid, 'is-valid': nome.touched && nome.valid}">
-    <div *ngIf="nome.touched && nome.invalid" class="invalid-feedback">
-      Nome é obrigatório.
+      [ngClass]="{'is-invalid': email.touched && email.invalid, 'is-valid': email.touched && email.valid}"
+      #email="ngModel">
+    <div *ngIf="email.touched && email.invalid" class="invalid-feedback">
+      E-mail é obrigatório.
     </div>
   </div>
   <button class="btn btn-primary">Submit</button>
