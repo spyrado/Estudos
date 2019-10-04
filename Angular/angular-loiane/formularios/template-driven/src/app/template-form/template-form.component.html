@@ -1,16 +1,24 @@
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input type="text" name="nome" [(ngModel)]="usuario.nome" id="nome" class="form-control" placeholder="nome"
-      aria-describedby="helpId" required #nome>
-    <div>
+    <input type="text" name="nome" [(ngModel)]="usuario.nome" 
+      id="nome" class="form-control"
+      [class.is-invalid]="nome.touched && nome.invalid"
+      [class.is-valid]="nome.touched && nome.valid"
+      placeholder="nome"
+      aria-describedby="helpId" required #nome="ngModel">
+    <div *ngIf="nome.touched && nome.invalid" class="invalid-feedback">
       Nome é obrigatório.
     </div>
   </div>
   <div class="form-group">
     <label for="email">Email</label>
     <input type="text" name="email" [(ngModel)]="usuario.email" id="email" class="form-control"
-      placeholder="email@gmail.com" aria-describedby="helpId" required email>
+      placeholder="email@gmail.com" aria-describedby="helpId" required email
+      [ngClass]="{'is-invalid': nome.touched && nome.invalid, 'is-valid': nome.touched && nome.valid}">
+    <div *ngIf="nome.touched && nome.invalid" class="invalid-feedback">
+      Nome é obrigatório.
+    </div>
   </div>
   <button class="btn btn-primary">Submit</button>
 </form>
