@@ -14,8 +14,8 @@ export interface MeuForm {
 export class TemplateFormComponent implements OnInit {
 
   usuario: any = {
-    nome: 'Nicolas',
-    email: 'nicolas@email.com'
+    nome: null,
+    email: null
   };
 
   constructor() { }
