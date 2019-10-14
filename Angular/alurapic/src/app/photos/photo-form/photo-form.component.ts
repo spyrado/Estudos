@@ -1,3 +1,4 @@
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PhotoService } from '../photo/photo.service';
@@ -15,6 +16,7 @@ export class PhotoFormComponent implements OnInit {
   photoForm: FormGroup;
   file: File;
   preview: string;
+  percentDone = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,9 +41,16 @@ export class PhotoFormComponent implements OnInit {
     this.photoService
       .upload(description, allowComments, this.file)
       .subscribe(
-        () => {
-          this.alertService.success('Upload complete', true);
-          this.router.navigate(['/user', this.userService.getUserName()])
+        (event: HttpEvent<any>) => {
+          // Se for do tipo UploadProgress, é que ainda está fazendo o upload, enquanto estiver
+          // fazendo o upload meu percentDone vai receber  o valor.
+          if(event.type === HttpEventType.UploadProgress){
+            this.percentDone = Math.round(100 * event.loaded / event.total);
+            // quando for response significa que o upload já finalizou, ai eu retorno a mensagem e redireciono
+          } else if (event.type === HttpEventType.Response) {
+            this.alertService.success('Upload complete', true);
+            this.router.navigate(['/user', this.userService.getUserName()])
+          }
         },
         (error) => console.error(error)
       );

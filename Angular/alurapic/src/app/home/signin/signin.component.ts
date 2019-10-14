@@ -19,11 +19,9 @@ export class SigninComponent implements OnInit{
     private authService: AuthService,
     private router: Router,
     private platformDetectorService: PlatformDetectorService,
-    private titleService: Title
   ){}
   
   ngOnInit(): void {
-    this.titleService.setTitle('Login');
     // Se a primeira condicao for true, ele executa a segunda.
     this.platformDetectorService.isPlatformBrowser() && 
     this.userNameInput.nativeElement.focus();
