@@ -1,10 +1,11 @@
-import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PhotoService } from '../photo/photo.service';
 import { Router } from '@angular/router';
 import { AlertService } from '../../shared/components/alert/alert.service';
 import { UserService } from '../../core/user/user-service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'ap-photo-form',
@@ -40,19 +41,23 @@ export class PhotoFormComponent implements OnInit {
 
     this.photoService
       .upload(description, allowComments, this.file)
+      .pipe(finalize(() => this.router.navigate(['/user', this.userService.getUserName()])))
       .subscribe(
         (event: HttpEvent<any>) => {
+          console.log(event);
           // Se for do tipo UploadProgress, é que ainda está fazendo o upload, enquanto estiver
           // fazendo o upload meu percentDone vai receber  o valor.
           if(event.type === HttpEventType.UploadProgress){
             this.percentDone = Math.round(100 * event.loaded / event.total);
             // quando for response significa que o upload já finalizou, ai eu retorno a mensagem e redireciono
-          } else if (event.type === HttpEventType.Response) {
+          } else if (event instanceof HttpResponse) {
             this.alertService.success('Upload complete', true);
-            this.router.navigate(['/user', this.userService.getUserName()])
           }
         },
-        (error) => console.error(error)
+        (error) => {
+          console.error(error);
+          this.alertService.success('Upload error!', true);
+        }
       );
   }
 
