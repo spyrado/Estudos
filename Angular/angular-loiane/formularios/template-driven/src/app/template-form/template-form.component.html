@@ -17,10 +17,15 @@
       placeholder="email@gmail.com" aria-describedby="helpId" required email
       [ngClass]="{'is-invalid': email.touched && email.invalid, 'is-valid': email.touched && email.valid}"
       #email="ngModel">
-    <div *ngIf="email.touched && email.invalid" class="invalid-feedback">
+    <div *ngIf="email.touched && email.control.errors?.required" class="invalid-feedback">
       E-mail é obrigatório.
+    </div>
+    <div *ngIf="email.touched && email.control.errors?.email" class="invalid-feedback">
+      E-mail inválido.
     </div>
   </div>
   <button class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+
+  <app-form-debug></app-form-debug>
 </form>
 {{ form.value | json }}
