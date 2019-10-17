@@ -1,1 +1,14 @@
-<p>form-debug works!</p>
+<div style="margin-top: 20px">
+  <div>
+    Detalhes do formulário
+  </div>
+  <pre class="bg-light">
+    Form válido: {{ form.valid }}
+  </pre>
+  <pre class="bg-light">
+    Form submetido: {{ form.submitted }}
+  </pre>
+  <pre class="bg-light">
+    Valores: {{ form.value | json}}
+  </pre>
+</div>
