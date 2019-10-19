@@ -16,7 +16,7 @@ module.exports = (app) => {
   });
   
   app.get('/livros', (req, res) => {
-
+    console.log('Listagem de Livros');
     const livroDao = new LivroDao(db);
 
     livroDao.lista()
@@ -35,7 +35,12 @@ module.exports = (app) => {
     ); 
   });
 
-  app.post('/livros', (req, res) => {
-    console.log(req.body);
-  });
+  // app.post('/livros', (req, res) => {
+  //   console.log(req.body);
+  //   const livroDao = new LivroDao(db);
+
+  //   livroDao.adiciona(req.body)
+  //     .then(???)
+  //     .catch(error => console.error(error));
+  // });
 }
