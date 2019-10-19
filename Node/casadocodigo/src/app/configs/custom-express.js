@@ -4,6 +4,12 @@ require('marko/express');
 
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+
+//Configurando para devolver o middleware que desejamos.
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 const rotas = require('../rotas/rotas.js');
 rotas(app);
