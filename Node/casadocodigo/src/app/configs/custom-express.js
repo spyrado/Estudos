@@ -6,6 +6,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+//Toda requisicao que for feita para /estatico, ele irá procurar no caminho passado: src/app/public
+app.use('/estatico', express.static('src/app/public'));
+
 //Configurando para devolver o middleware que desejamos.
 app.use(bodyParser.urlencoded({
   extended: true

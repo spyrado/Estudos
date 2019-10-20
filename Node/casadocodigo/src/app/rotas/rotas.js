@@ -43,4 +43,10 @@ module.exports = (app) => {
       .then(res.redirect('/livros'))
       .catch(error => console.error(error));
   });
+
+  app.delete('/livros/:id', (req,res) => {
+    const ID = req.params.id;
+    const livroDao = new LivroDao(db);
+    livroDao.remove()
+  });
 }
