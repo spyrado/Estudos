@@ -9,8 +9,8 @@ class LivroDao {
       
       this._db.all(
         'SELECT * FROM livros',
-        (erro, resultados) => {
-          if (erro) return reject('Não foi possível listar os livros');
+        (error, resultados) => {
+          if (error) return reject('Não foi possível listar os livros');
 
           return resolve(resultados);
 
@@ -18,6 +18,73 @@ class LivroDao {
       );
     });
   }
+  adiciona(livro) {
+    return new Promise((resolve, reject) => {
+      this._db.run(`INSERT INTO livros (
+        titulo,
+        preco,
+        descricao
+      ) values (?, ?, ?)`,
+      [
+        livro.titulo,
+        livro.preco,
+        livro.descricao
+      ],
+      error => {
+        console.log(error);
+        if (error) return reject('Não foi possível adicionar o livro');
+        resolve();
+      });
+    });
+  }
+  buscaPorId(id) {
+    return new Promise((resolve, reject) => {
+      this._db.all(
+        'SELECT * FROM livros WHERE id = ?',
+        [id],
+        (error, livro) => {
+          if (error) return reject('Não foi encontrar o livro');
+
+          return resolve(livro);
+        }
+      );
+    });
+  }
+
+  atualiza(livro) {
+    return new Promise((resolve, reject) => {
+      this._db.run(
+        `UPDATE livros
+          SET titulo = ?, preco = ?, descricao = ?
+          WHERE id = ?`,
+        [
+          livro.titulo,
+          livro.preco,
+          livro.descricao,
+          livro.id
+        ],
+        error => {
+          console.log(error);
+          if (error) return reject('Não foi possível atualizar o livro');
+          resolve();
+        }
+      );
+    });
+  }
+  remove(id) {
+    return new Promise((resolve, reject) => {
+      this._db.run(
+        `DELETE FROM livros
+          WHERE id = ?`,
+          [id],
+          error => {
+            if (error) return reject('Nao foi possivel remover o livro');
+            resolve()
+          }
+      )
+    });
+  }
 }
+
 
 module.exports = LivroDao;

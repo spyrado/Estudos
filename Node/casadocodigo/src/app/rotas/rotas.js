@@ -35,12 +35,12 @@ module.exports = (app) => {
     ); 
   });
 
-  // app.post('/livros', (req, res) => {
-  //   console.log(req.body);
-  //   const livroDao = new LivroDao(db);
+  app.post('/livros', (req, res) => {
+    console.log(req.body);
+    const livroDao = new LivroDao(db);
 
-  //   livroDao.adiciona(req.body)
-  //     .then(???)
-  //     .catch(error => console.error(error));
-  // });
+    livroDao.adiciona(req.body)
+      .then(res.redirect('/livros'))
+      .catch(error => console.error(error));
+  });
 }
