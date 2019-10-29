@@ -6,6 +6,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 
+const templates = require('../app/views/templates')
+
 app.use('/estatico', express.static('src/app/public'));
 
 app.use(bodyParser.urlencoded({
@@ -24,7 +26,7 @@ const rotas = require('../app/rotas/rotas');
 rotas(app);
 app.use((req,res,next) => {
     res.status(404).marko(
-      require('../app/views/base/erros/404.marko')
+      templates.base.erro404
     );
 });
 // Colocamos erro na frente mesmo nao usando, pois é somente dessa forma
@@ -32,7 +34,7 @@ app.use((req,res,next) => {
 // 4 parametros
 app.use((erro,req,res,next) => {
   res.status(500).marko(
-    require('../app/views/base/erros/500.marko')
+    templates.base.erro500
   );
 });
 module.exports = app;
