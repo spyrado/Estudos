@@ -3,7 +3,7 @@ const sessao = require('express-session');
 const passport = require('passport');
 const LocalStategy = require('passport-local').Strategy;
 const db = require('./database');
-const UsuarioDao = require('../app/infra/usuario-dao')
+const UsuarioDao = require('../app/infra/usuario-dao');
 
 module.exports = (app) => {
 
@@ -30,5 +30,37 @@ module.exports = (app) => {
         })
         .catch(erro => done(erro, false));
     }
-  ))
+  ));
+
+  //
+  passport.serializeUser((usuario, done) => {
+    // Passo apenas as informacoes que quero armazenar em sessao.
+    const usuarioSessao = {
+      nome: usuario.nome_completo,
+      email: usuario.email
+    };
+
+    done(null, usuarioSessao);
+  });
+
+  passport.deserializeUser((usuarioSessao, done) => {
+    done(null, usuarioSessao);
+  });
+
+  //nossa sessao é um middleware, por isso inserimos dentro de app.use
+  app.use(sessao({
+    secret: 'node alura', // serve para assinar/identificar a nossa secao
+    genid: function(req) { // o papel dela, é retornar um identificar aleatorio qualquer. o uuid faz isso para nos
+      return uuid();
+    },
+    resave: false, // dizendo que nao quero resalvar as sessoes mesmo q n tenha alteracoes nelas.
+    // nao quero que a aplicacao gere uma sessao, para todo mundo que acessar a home.
+    // apenas quando a efetivacao do login for feita com sucesso.
+    saveUninitialized: false
+  }));
+
+  // Terminando todas as configuracoes acima, temos que pedir para o passport ser iniciado, e iniciar
+  // a sessao tambem
+  app.use(passport.initialize());
+  app.use(passport.session());
 }
