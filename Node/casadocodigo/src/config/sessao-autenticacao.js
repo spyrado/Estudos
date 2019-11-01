@@ -63,4 +63,10 @@ module.exports = (app) => {
   // a sessao tambem
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // Apos termos feito todas as configuracoes, nós passamos em todas as requisicoes, o nosso passport.
+  app.use(function(req, res, next) {
+    req.passport = passport;
+    next();
+  });
 }
