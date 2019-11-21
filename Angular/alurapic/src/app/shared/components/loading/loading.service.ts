@@ -13,7 +13,7 @@ export class LoadingService {
   getLoading() {
     return this.loadingSubject
       .asObservable()
-      .pipe(startWith(LoadingType.STOPPED)); // ja retorno o observable com o valor stopped
+      .pipe(startWith(LoadingType.STOPPED));
   }
 
   start() {
