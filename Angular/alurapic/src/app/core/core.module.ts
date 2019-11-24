@@ -6,6 +6,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './auth/request.interceptor';
 import { AlertModule } from '../shared/components/alert/alert.module';
+import { LoadingModule } from '../shared/components/loading/loading.module';
+import { MenuModule } from '../shared/components/menu/menu.module';
 
 @NgModule({
   declarations: [ 
@@ -15,7 +17,9 @@ import { AlertModule } from '../shared/components/alert/alert.module';
   imports: [ 
     CommonModule,
     RouterModule,
-    AlertModule
+    AlertModule,
+    LoadingModule,
+    MenuModule
   ],
   exports: [ 
     HeaderComponent,
