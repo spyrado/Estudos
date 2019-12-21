@@ -21,7 +21,7 @@ export class ReusableFormsExampleComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.signupForm.value);
+    console.log(this.signupForm);
   }
 
 }
