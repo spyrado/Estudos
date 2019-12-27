@@ -1,0 +1,7 @@
+<input class="form-control" 
+  [type]="type" 
+  #input 
+  (input)="onChange($event.target.value)" 
+  (blur)="onTouched()"
+  [disabled]="disabled" 
+  [placeholder]="placeholder">
