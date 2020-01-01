@@ -15,6 +15,8 @@ class Tabelas {
       servico VARCHAR(20) NOT NULL,
       status VARCHAR(20) NOT NULL,
       observacoes text,
+      data datetime NOT NULL,
+      dataCriacao datetime NOT NULL,
       PRIMARY KEY(id)
     )`;
 
