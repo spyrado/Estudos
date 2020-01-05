@@ -37,7 +37,7 @@ class Atendimentos {
       conexao.query(sql, atendimentoDatado, (erro, resultados) => {
           if (erro) { res.status(400).json(erro); }
           else {
-            res.status(201).json(resultados);
+            res.status(201).json(atendimento);
           }
       });
     }
@@ -70,10 +70,33 @@ class Atendimentos {
   }
 
   atualiza(id, valores, res) {
+
+    if (valores.data) {
+      valores.data = moment(valores.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS');
+    }
+
     const sql = `
       UPDATE Atendimentos 
       SET ?
-      WHERE id = ${id}`;
+      WHERE id = ?`;
+
+    conexao.query(sql, [valores, id], (erro, resultados) => {
+      if (erro) { res.status(400).json(erro); }
+      else {
+        res.status(200).send({...valores, id});
+      }
+    })
+  }
+
+  deleta(id, res) {
+    const sql = `DELETE FROM Atendimentos WHERE id = ${id}`;
+
+    conexao.query(sql, (erro, resultados) => {
+        if (erro) { res.status(400).json(erro); }
+        else {
+          res.status(200).json(resultados);
+        }
+    })
   }
 }
 
