@@ -9,7 +9,7 @@ export class StatesService {
 
   constructor(private http: HttpClient) { }
 
-  get() {
+  getStates() {
     return this.http.get<Estados[]>('https://servicodados.ibge.gov.br/api/v1/localidades/distritos');
   }
 }
