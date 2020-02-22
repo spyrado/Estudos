@@ -1,0 +1,4 @@
+<label for="select-ref">Select a state:</label>
+<select name="" id="select-ref">
+  <option *ngFor="let state of states" [value]="state.id">{{ state.nome }}</option>
+</select>
