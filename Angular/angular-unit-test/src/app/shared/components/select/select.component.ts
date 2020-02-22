@@ -17,6 +17,9 @@ export class SelectComponent implements OnInit {
       .subscribe((res) => {
         this.states = res.splice(0,5);
         console.log(this.states);
+      },
+      error => {
+        console.log(error);
       });
   }
 
