@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, LoadingController, Loading, AlertController, Alert } from 'ionic-angular';
 import { CarrosService } from '../../providers/carros-service/carros-service';
+import { NavLifeCycle } from '../../utils/ionic/nav/nav-lifecycle';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { CarrosService } from '../../providers/carros-service/carros-service';
     CarrosService
   ]
 })
-export class HomePage implements OnInit{
+export class HomePage implements NavLifeCycle{
   
   public carros: Carro[];
   private loading: Loading;
@@ -23,7 +24,7 @@ export class HomePage implements OnInit{
     private alertCtrl: AlertController
   ) {}
 
-  ngOnInit(): void {
+  ionViewDidLoad() {
     this.setLoading();
     this.setAlert();
     this.getCarros();
