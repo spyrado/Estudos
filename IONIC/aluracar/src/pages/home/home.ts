@@ -24,6 +24,7 @@ export class HomePage implements NavLifeCycle{
     private alertCtrl: AlertController
   ) {}
 
+  // Life Cyclo do IONIC -> similar ao NgOnInit do Angular
   ionViewDidLoad() {
     this.setLoading();
     this.setAlert();
@@ -63,9 +64,14 @@ export class HomePage implements NavLifeCycle{
     });
   }
 
+  selecionaCarro(carro: Carro) {
+    console.log(carro);
+  }
+
 }
 
 export interface Carro {
   nome: string;
   preco: number;
+  fotos: string[];
 }
