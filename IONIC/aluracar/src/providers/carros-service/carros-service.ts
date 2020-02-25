@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Carro } from '../../pages/home/home';
+import { Carro } from '../../modelos/carro';
 
 @Injectable()
 export class CarrosService {
