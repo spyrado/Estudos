@@ -4,7 +4,10 @@ import { CarrosService } from '../shared/services/carros.service';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [
+    CarrosService
+  ]
 })
 export class HomePage implements OnInit{
   
