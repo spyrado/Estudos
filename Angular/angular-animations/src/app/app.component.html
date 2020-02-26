@@ -1,0 +1,5 @@
+<button (click)="isOpen = !isOpen">{{ isOpen ? 'FECHAR' : 'ABRIR' }}</button>
+
+<div [@openClose]="isOpen ? 'open' : 'closed'" class="minhaDiv">
+  <p>Aberto? {{isOpen}}</p>
+</div>
