@@ -13,7 +13,7 @@ import { EscolhaPage } from '../escolha/escolha';
     CarrosService
   ]
 })
-export class HomePage implements NavLifeCycle{
+export class HomePage implements NavLifeCycle {
   
   public carros: Carro[];
   private loading: Loading;
@@ -28,6 +28,7 @@ export class HomePage implements NavLifeCycle{
 
   // Life Cyclo do IONIC -> similar ao NgOnInit do Angular
   ionViewDidLoad() {
+    console.log('INICIEI A HOME');
     this.setLoading();
     this.setAlert();
     this.getCarros();
