@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Carro } from '../../modelos/carro';
 
 /**
  * Generated class for the EscolhaPage page.
@@ -13,13 +14,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-escolha',
   templateUrl: 'escolha.html',
 })
-export class EscolhaPage {
+export class EscolhaPage implements OnInit{
+  
+  carro: Carro;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  ngOnInit(): void {
+    this.carro = this.navParams.get('carroSelecionado');
+  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EscolhaPage');
+    console.log(this.navParams.get('carroSelecionado'));
   }
 
 }

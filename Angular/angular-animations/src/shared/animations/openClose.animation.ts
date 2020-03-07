@@ -1,6 +1,12 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { trigger, state, style, transition, animate, query } from '@angular/animations';
 
 export const openClose = trigger('openClose', [
+  state('whatever', style({
+    width: '63%',
+    height: '76%',
+    opacity: 0.5,
+    backgroundColor: 'red'
+  })),
   state('open', style({
     width: '100%',
     height: '100%',
@@ -13,10 +19,7 @@ export const openClose = trigger('openClose', [
     opacity: 0.5,
     backgroundColor: 'green'
   })),
-  transition('open => closed', [
-    animate('1s')
-  ]),
-  transition('closed => open', [
+  transition('* => *', [
     animate('0.5s')
-  ]),
+  ])
 ]);
