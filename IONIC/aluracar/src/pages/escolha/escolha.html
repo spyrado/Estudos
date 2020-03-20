@@ -8,8 +8,26 @@
 
 
 <ion-content padding>
+  <ion-item-group>
+    <ion-item-divider color="light">
+      VEÍCULOS
+    </ion-item-divider>
+    <ion-item>{{ carro.nome }}</ion-item>
+    <ion-item>R$ {{ carro.preco }}</ion-item>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="light">
+      <ion-icon ios="ios-options" md="md-options"></ion-icon>
+      ACESSÓRIOS
+    </ion-item-divider>
+    <ion-item>Acessório 1</ion-item>
+    <ion-item>Acessório 2</ion-item>
+  </ion-item-group>
+
   <ion-item-divider color="light">
-    VEÍCULOS
+    <span item-right>TOTAL: R$ 100</span>
   </ion-item-divider>
-  <ion-item>{{ carro.nome }}</ion-item>
+
+  <button ion-button block>Avançar</button>
 </ion-content>
