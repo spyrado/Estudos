@@ -23,10 +23,19 @@ class FormularioTransferencia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Transferências'),
+        title: Text('Criando Transferências'),
         centerTitle: false,
         backgroundColor: Color.fromRGBO(109, 33, 119, 1),
       ),
+      body: Column(children: < Widget > [
+        TextField(
+          decoration: InputDecoration(
+            labelText: 'Digite um valor',
+            hintText: '0000'
+          ),
+        ),
+        TextField(),
+      ], ),
     );
   }
 }
