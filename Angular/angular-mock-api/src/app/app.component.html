@@ -1,7 +1,23 @@
-<ul>
-  <li *ngFor="let user of (users$ | async)">
-    {{ user.name }}
-  </li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Idade</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.sobrenome }}</td>
+      <td>{{ user.idade }}</td>
+    </tr>
+  </tbody>
+</table>
 
-<button (click)="addUser()">teste</button>
+<button (click)="postUser()">post user</button>
+<button (click)="removeLastUser()">remove last user</button>
+<button (click)="patchUser()">patch user</button>
+<button (click)="putUser()">put user</button>
