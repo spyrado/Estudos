@@ -20,11 +20,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
         } 
+      },
+      {
+        test: /\.css$/,
+        use: {
+          loader: 'style-loader!css-loader' // IMPORTANTE essa exclamacao separa um LOADER do OUTRO, E ELE COMECA DA DIREITA PARA A ESQUEDA A LER OS LOADERS
+        }
       }
     ]
   },
