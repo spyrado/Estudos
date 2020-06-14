@@ -3,7 +3,7 @@ const babiliPlugin = require('babili-webpack-plugin');
 
 let plugins = [];
 
-if(process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV == 'production') {
   plugins.push(new babiliPlugin());
 }
 
@@ -18,19 +18,39 @@ module.exports = {
     publicPath: '/dist'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
-        } 
+        }
       },
       {
         test: /\.css$/,
-        use: {
-          loader: 'style-loader!css-loader' // IMPORTANTE essa exclamacao separa um LOADER do OUTRO, E ELE COMECA DA DIREITA PARA A ESQUEDA A LER OS LOADERS
-        }
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+          },
+        ]
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },
