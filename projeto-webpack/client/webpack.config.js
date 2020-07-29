@@ -14,6 +14,13 @@ plugins.push(new webpack.ProvidePlugin({
   'jQuery': 'jquery/dist/jquery.js'
 }));
 
+// aqui vou configurar para que o webpack compile todas as bibliotecas de terceiros e deixe em um arquivo separado
+plugins.push(
+  new webpack.optimize.CommonsChunkPlugin({ 
+    name: 'vendor', 
+    filename: 'vendor.bundle.js'
+})); 
+
 if (process.env.NODE_ENV == 'production') {
   //puglin que otmiza o build de producao.
   plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
@@ -30,7 +37,10 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 module.exports = {
-  entry: './app-src/app.js',
+  entry: {
+    app: './app-src/app.js',
+    vendor: ['jquery', 'bootstrap', 'reflect-metadata']
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
