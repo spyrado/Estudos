@@ -3,11 +3,20 @@ const babiliPlugin = require('babili-webpack-plugin');
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const webpack = require('webpack');
+
 let plugins = [];
 
 plugins.push(new extractTextPlugin('styles.css'));
 
+plugins.push(new webpack.ProvidePlugin({
+  '$': 'jquery/dist/jquery.js',
+  'jQuery': 'jquery/dist/jquery.js'
+}));
+
 if (process.env.NODE_ENV == 'production') {
+  //puglin que otmiza o build de producao.
+  plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
   plugins.push(new babiliPlugin());
   plugins.push(new optimizeCSSAssetsPlugin({
     cssProcessor: require('cssnano'),
