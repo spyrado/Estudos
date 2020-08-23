@@ -58,7 +58,6 @@ module.exports = {
   },
   devServer: {
     port: 4200,
-    publicPath: '/dist'
   },
   module: {
     rules: [{
